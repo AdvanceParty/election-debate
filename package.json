@@ -1,0 +1,35 @@
+{
+  "name": "leaders-debate",
+  "version": "0.0.1",
+  "description": "An Australian Federal Election Leaders Debate, reimagined by a neural network.",
+  "main": "index.js",
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 11"
+  ],
+  "scripts": {
+    "generate": "python rnn/mashup.py -m rnn/models/shortcorpus/ -n 20 -t .7",
+    "clean": "rm -rf dist",
+    "start": "parcel www-src/index.html",
+    "build:www": "parcel build www-src/index.html -d dist/",
+    "build": "npm run clean && npm run build:www"
+  },
+  "keywords": [
+    "neural-networks",
+    "machine-learning",
+    "politics"
+  ],
+  "author": "Gil Fewster <gil@theroyals.com.au> (http://www.advanceparty.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/runtime": "^7.4.3",
+    "autoprefixer": "^9.5.1",
+    "cssnano": "^4.1.10",
+    "parcel": "^1.12.3",
+    "postcss-assets": "^5.0.0",
+    "sass": "^1.20.1"
+  }
+}
