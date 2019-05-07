@@ -57,7 +57,8 @@ def gen(prefix):
     #         config.output_name, prefix=prefix, temperature=config.temp)
 
 
-interviewer = "INTERVIEWER: "
+# interviewer = "INTERVIEWER: "
+interviewer = "Will you abolish negative gearing?"
 shorten = "SHORTEN: "
 pm = "PRIME MINISTER: "
 crowd = "["

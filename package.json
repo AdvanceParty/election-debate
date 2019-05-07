@@ -9,7 +9,7 @@
     "IE 11"
   ],
   "scripts": {
-    "generate": "python rnn/mashup.py -m rnn/models/shortcorpus/ -n 20 -t .7",
+    "generate": "python rnn/mashup.py -m rnn/models/shortcorpus2/ -n 10 -t .8",
     "clean": "rm -rf dist",
     "start": "parcel www-src/index.html",
     "build:www": "parcel build www-src/index.html -d dist/",
