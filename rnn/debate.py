@@ -47,11 +47,11 @@ bs = textgenrnn(
 )
 
 pm = textgenrnn(
-    # 'rnn/' + config.pm_model + "/textgenrnn_weights.hdf5",
+    'rnn/' + config.pm_model + "/textgenrnn_weights.hdf5",
     name="pm",
-    weights_path='rnn/' + config.pm_model + "/textgenrnn_weights.hdf5",
-    vocab_path='rnn/' + config.pm_model + "/textgenrnn_vocab.json",
-    config_path='rnn/' + config.pm_model + "/textgenrnn_config.json"
+    # weights_path='rnn/' + config.pm_model + "/textgenrnn_weights.hdf5",
+    # vocab_path='rnn/' + config.pm_model + "/textgenrnn_vocab.json",
+    # config_path='rnn/' + config.pm_model + "/textgenrnn_config.json"
 )
 
 
@@ -74,10 +74,9 @@ def format_line(str, model):
 
 def generate(model, prefix=''):
     result = model.generate(
-        1,
         temperature=config.temp,
         prefix=prefix,
-        max_gen_length=1000,
+        max_gen_length=300 + len(prefix),
         return_as_list=True
     )
     return result[0]
@@ -89,6 +88,11 @@ def format_section(str):
 
 def format_transcript(str):
     return '\n----Transcript----\n' + str + '--------------------\n'
+
+
+def lastWords(str):
+    words = str.split(" ")
+    return ' '.join(words[2:4] + words[-3:])
 
 
 def getAll():
@@ -105,21 +109,36 @@ def getAll():
         q = get_question()
         section = format_line(q, "QUESTION")
 
-        a1_raw = generate(first, q)
-        a1_clean = a1_raw.replace(q, '')
+        seed = lastWords(q)
+        a1_raw = generate(first, seed)
+        a1_clean = a1_raw.replace(seed, '')
+
         section += format_line(a1_clean, first)
 
+        # print('seed: ' + seed)
+        # print('raw: ' + a1_raw)
+        # print('clean: ' + a1_clean)
+        # print('-------')
+
         if hasReply:
-            a2_raw = generate(second, a1_raw)
-            a2_clean = a2_raw.replace(a1_raw, '')
+            seed = lastWords(a1_raw)
+            a2_raw = generate(second, seed)
+            a2_clean = a2_raw.replace(seed, '')
+
             section += format_line(a2_clean, second)
 
         if hasRetort:
-            a3_raw = generate(first, a2_raw)
-            a3_clean = a3_raw.replace(a2_raw, '')
-            section += format_line(a3_clean, first)
+            seed = lastWords(a2_raw)
+            a3_raw = generate(first, seed)
+            a3_clean = a3_raw.replace(seed, '')
+
+            section += format_line(a2_clean, second)
 
         transcript += format_section(section)
+
+        # just so we can watch as it generates
+        # comment out when building big files or moving to production
+        # print(section)
 
     return format_transcript(transcript)
 
