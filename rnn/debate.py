@@ -62,6 +62,7 @@ def get_question():
 
 
 def format_line(str, model):
+    html_string = "<section>"
     if model == pm:
         speaker = 'MORRISON'
     elif model == bs:
@@ -82,8 +83,20 @@ def generate(model, prefix=''):
     return result[0]
 
 
-def format_section(str):
-    return '\n\n' + str + '\n'
+def wrap_in_tag(content, tag_type, class=''):
+    tag = '<' + tag_name + ''
+
+    if len(class) > 0:
+        tag += 'class="' + class = '"'
+    tag += '>\n' + content + '\n</' + tag_type + '>\n'
+    return tag
+
+
+def format_as_html(content, speaker_name, speaker_tag_name='h2', class=''):
+
+    speaker_tag = wrap_in_tag(speaker_name, speaker_tag_name)
+    section_content = speaker_tag + content
+    return wrap_in_tag(section_content, 'section', class)
 
 
 def format_transcript(str):
@@ -103,36 +116,36 @@ def getAll():
         hasReply = random.random() < .75
         hasRetort = hasReply and random.random() > .85
 
-        first = bs if firstAnswerDecider >= .5 else pm
-        second = pm if first == bs else bs
+        first_speaker = bs if firstAnswerDecider >= .5 else pm
+        second_speaker = pm if first == bs else bs
 
         q = get_question()
-        section = format_line(q, "QUESTION")
+        # section = format_line(q, "QUESTION")
 
         seed = lastWords(q)
-        a1_raw = generate(first, seed)
-        a1_clean = a1_raw.replace(seed, '')
+        response_raw = generate(first_speaker, seed)
+        response_clean = response_raw.replace(seed, '')
 
-        section += format_line(a1_clean, first)
+        section += format_line(response_clean, first_speaker)
 
         # print('seed: ' + seed)
-        # print('raw: ' + a1_raw)
-        # print('clean: ' + a1_clean)
+        # print('raw: ' + response_raw)
+        # print('clean: ' + response_clean)
         # print('-------')
 
         if hasReply:
-            seed = lastWords(a1_raw)
-            a2_raw = generate(second, seed)
-            a2_clean = a2_raw.replace(seed, '')
+            seed = lastWords(response_raw)
+            response2_raw = generate(second_speaker, seed)
+            response2_clean = response2_raw.replace(seed, '')
 
-            section += format_line(a2_clean, second)
+            section += format_line(response2_clean, second_speaker)
 
         if hasRetort:
-            seed = lastWords(a2_raw)
-            a3_raw = generate(first, seed)
-            a3_clean = a3_raw.replace(seed, '')
+            seed = lastWords(response2_raw)
+            response3_raw = generate(first_speaker, seed)
+            response3_clean = response3_raw.replace(seed, '')
 
-            section += format_line(a2_clean, second)
+            section += format_line(response2_clean, second_speaker)
 
         transcript += format_section(section)
 
