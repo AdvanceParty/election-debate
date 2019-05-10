@@ -36,6 +36,13 @@ parser.add_argument(
     default='models/pm',
     help='Model for Scott Morrison.'
 )
+parser.add_argument(
+    '-o',
+    action='store',
+    dest='output_file',
+    default=False,
+    help='fPath and name to save output file. If false, output will not be written to disk.'
+)
 config = parser.parse_args()
 
 bs = textgenrnn(
@@ -49,13 +56,13 @@ pm = textgenrnn(
 )
 
 models = [
-    {'model': bs, 'speaker': "SHORTEN", 'class_name': 'shorten'},
-    {'model': pm, 'speaker': "PRIME MINISTER", 'class_name': 'pm'}
+    {'model': bs, 'speaker': "Shorten", 'class_name': 'shorten'},
+    {'model': pm, 'speaker': "Prime Minister", 'class_name': 'pm'}
 ]
 
 interviewer = {
-    'speaker': "INTERVIEWER",
-    'class_name':  "interviewer"
+    'speaker': "Host",
+    'class_name':  "question"
 }
 
 
@@ -82,13 +89,12 @@ def get_seed(str):
 
 
 def wrap_in_tag(content, tag_type, class_name=''):
-    # tag = '<' + tag_type + ''
+    if len(class_name) > 0:
+        str = f"<{tag_type} class='{class_name}'>{content}</{tag_type}>"
+    else:
+        str = f"<{tag_type}>{content}</{tag_type}>"
 
-    # if len(class_name) > 0:
-    #     tag += 'class="' + class_name + '"'
-    # tag += '>\n' + content + '\n</' + tag_type + '>\n'
-    # return tag
-    return f"<{tag_type} class='{class_name}'>{content}</{tag_type}>"
+    return str
 
 
 def format_dialog_as_html(content, speaker, class_name='', speaker_tag='h2'):
@@ -105,7 +111,8 @@ def get_q_and_a():
 
     q = get_question()
     seed = get_seed(q)
-    content = format_dialog_as_html(q, 'INTERVIEWER', 'interviewer')
+    content = format_dialog_as_html(
+        q, interviewer['speaker'], interviewer['class_name'])
     lines.append({'seed': seed, 'content': content})
 
     #  randomly reverse the models list (or don't)
@@ -153,11 +160,31 @@ def get_q_and_a():
 def getAll():
     interview = []
     for x in range(0, config.generate_n):
-        dbug = f"Generating question/answer {x} of {config.generate_n}."
+        dbug = f"Generating question/answer {x+1} of {config.generate_n}."
         print(dbug)
-        interview.append(get_q_and_a())
+        interview += get_q_and_a()
 
     return interview
 
 
-print(getAll())
+def save_output(content, path):
+    save_file = open(path, 'w')
+    save_file.write(content)
+
+
+def start():
+    conversation_items = getAll()
+    html_output = ''
+    for item in conversation_items:
+        html_output += item['content'] + '\n'
+
+    if (config.output_file):
+        save_output(html_output, config.output_file)
+        print('-----------------------------------------')
+        print(f"Saved to file {config.output_file}")
+        print('-----------------------------------------')
+
+    print(html_output)
+
+
+start()

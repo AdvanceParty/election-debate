@@ -9,7 +9,8 @@
     "IE 11"
   ],
   "scripts": {
-    "generate": "python rnn/debate.py -n 2 -t .8",
+    "generate": "python rnn/debate.py -n 30 -t .8 -o www-src/html-modules/debate_raw.html",
+    "sample": "python rnn/debate.py -n 5 -t .8",
     "clean": "rm -rf dist",
     "start": "parcel www-src/index.html",
     "build:www": "parcel build www-src/index.html -d dist/",
@@ -30,6 +31,8 @@
     "cssnano": "^4.1.10",
     "parcel": "^1.12.3",
     "postcss-assets": "^5.0.0",
+    "posthtml": "^0.11.4",
+    "posthtml-modules": "^0.4.2",
     "sass": "^1.20.1"
   }
 }
