@@ -9,7 +9,7 @@
     "IE 11"
   ],
   "scripts": {
-    "generate": "python rnn/debate.py -n 30 -t .8 -o www-src/html-modules/debate_raw.html",
+    "generate": "python rnn/debate.py -n 30 -t .8 -o rnn/generated/debate.html",
     "sample": "python rnn/debate.py -n 5 -t .8",
     "clean": "rm -rf dist",
     "start": "parcel www-src/index.html",

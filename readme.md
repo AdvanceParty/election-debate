@@ -35,3 +35,23 @@ The results will be hosted on a website with the debate content displayed on the
 The neural network was built with [Max Woolf's](https://minimaxir.com/) excellent [textgenrnn](https://github.com/minimaxir/textgenrnn) library.
 
 [Jannelle Shane's](https://aiweirdness.com/) experiments with neural networks are an ongoing course of inspiration and hilarity.
+
+## Requirements
+
+#### To build the static site
+
+- NPM or Yarn
+- Node 10~ (later version may also be OK but are untested)
+
+#### To generate new content
+
+- python 3.6 (3.7 will not work)
+- tensorflow for python
+
+The debate on the main page is built using the HTML module at `www-src/html-modules/debate.html`. This content has been selectively curated from a much larger pool of generated dialogue, to curate the best version of a debate.
+
+The package.json file includes a wrapper script for the pyrhon generator. Just run `npm run generate` from the project root to generate a bunch of new output. The new data is saved to disk in `rnn/generated/debate.html`. Note that each time you run the generate script, it will overwrite any previous version of this file by default.
+
+If you want to dig deeper into the generation process and tweak the settings, you can call the python script directly and play around with config settings. Type `python rnn/debate.py --help` from project root for a list of available options.
+
+Underneath the hood, it's all just using textgenrnn library, so if you're familiar with that you can write your own python scripts and interact directly with the models in `rnn/models/`.
