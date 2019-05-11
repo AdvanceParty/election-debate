@@ -6,15 +6,15 @@
   padding: 1em;
   overflow: hidden;
 
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, -100%, 0);
 
   color: rgba(invert(getCol("bg-overlay")), 1);
   background: getCol("bg-overlay");
 
   transition: transform 400ms ease-in-out;
 
-  &.hide {
-    transform: translate3d(0, -100%, 0);
+  &.open {
+    transform: translate3d(0, 0, 0);
   }
 
   h2 {
