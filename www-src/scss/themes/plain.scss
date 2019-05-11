@@ -44,8 +44,8 @@ header {
     height: 100vh;
   }
 
-  .bs {  background-image: url('../img/bs.jpg') }
-  .sm {  background-image: url('../img/sm.jpg') }
+  .shorten {  background-image: url('../img/bs.jpg') }
+  .pm {  background-image: url('../img/sm.jpg') }
 }
 
 
@@ -82,12 +82,12 @@ main {
     justify-self: center;
   }
 
-  .bs { 
+  .shorten { 
     grid-column: 1/3; 
     background-color: rgba($lab-col, $bubble-bg-opacity); 
   };
 
-  .sm {
+  .pm {
     grid-column: 2/-1; 
     text-align: right; 
     justify-self: end; 
