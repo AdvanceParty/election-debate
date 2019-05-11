@@ -36,6 +36,11 @@ The neural network was built with [Max Woolf's](https://minimaxir.com/) excellen
 
 [Jannelle Shane's](https://aiweirdness.com/) experiments with neural networks are an ongoing course of inspiration and hilarity.
 
+## Deployment
+
+Continuous deployment to Netlify is configured via webhooks.
+To trigger a new deployment, push to the master branch on the github repo.
+
 ## Requirements
 
 #### To build the static site
