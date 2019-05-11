@@ -12,7 +12,7 @@
     "generate": "python rnn/debate.py -n 30 -t .8 -o rnn/generated/debate.html",
     "sample": "python rnn/debate.py -n 5 -t .8",
     "clean": "rm -rf dist",
-    "start": "parcel www-src/index.html",
+    "start": "parcel www-src/*.html",
     "build:www": "parcel build www-src/*.html -d dist/",
     "build": "npm run clean && npm run build:www"
   },
