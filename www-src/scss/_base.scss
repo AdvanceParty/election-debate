@@ -23,12 +23,14 @@ body {
   background: getCol("bg-page");
 
   min-height: 100vh;
+  // min-width: 370px;
   display: flex;
   flex-direction: column;
 }
 
 main {
   flex: 1;
+  background: #dedede;
 }
 
 a {
@@ -39,7 +41,7 @@ body > header,
 main,
 body > footer {
   display: grid;
-  grid-template-columns: 1rem 1fr 1rem;
+  grid-template-columns: minmax(10px, auto) minmax(300px, 800px) minmax(10px, auto);
 
   > * {
     grid-column: 2;
