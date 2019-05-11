@@ -14,7 +14,7 @@ Trained on speech transcripts from pm.gov website and http://sjm.ministers.treas
 
 - new_model: True
 - line_delimited: True
-- num_epochs: 50
+- num_epochs: 100
 - gen_epochs: 5
 - batch_size: 1024
 - train_size: 0.8
