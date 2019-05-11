@@ -13,7 +13,7 @@ Trained on speech transcripts from pm.gov website and http://sjm.ministers.treas
 ## train_cfg
 
 - new_model: True
-- line_delimited: False
+- line_delimited: True
 - num_epochs: 50
 - gen_epochs: 5
 - batch_size: 1024
