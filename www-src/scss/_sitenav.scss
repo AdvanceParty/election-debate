@@ -1,0 +1,37 @@
+#siteNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em;
+  overflow: hidden;
+
+  transform: translate3d(0, 0, 0);
+
+  color: rgba(invert(getCol("bg-overlay")), 1);
+  background: getCol("bg-overlay");
+
+  transition: transform 400ms ease-in-out;
+
+  &.hide {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  ul {
+    margin: 0 0 2em 0;
+    padding: 0;
+
+    li {
+      display: block;
+      margin: 0 0 1em 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -3,10 +3,11 @@
 // see getCol function in _funcs.scss file for accessing
 // colors from the global palette in scss files
 $palette-default: (
-  page-bg: #fff,
-  page-bg-invert: #333,
-  body: rgba(0,0,0,.75),
-  body-invert: rgba(3250,250,250,.75),
-  lib-primary: #00529c,
-  labor-primary: #bf2232
+  primary: #fff,
+  secondary: #333,
+  tertiary: #333,
+  accent: #336699,
+  highlight: #990044,
+  light: #fff,
+  dark: #000
 );

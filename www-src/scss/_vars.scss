@@ -1,0 +1,20 @@
+// assign a specific map of colors to a global $palette var
+$palette: $palette-default;
+$cols: (
+  primary: map-get($palette, "primary"),
+  secondary: map-get($palette, "secondary"),
+  tertiary: map-get($palette, "tertiary"),
+  accent: map-get($palette, "accent"),
+  highlight: map-get($palette, "highlight"),
+  light: map-get($palette, "light"),
+  dark: map-get($palette, "dark"),
+  body: rgba(map-get($palette, "dark"), 0.75),
+  heading: map-get($palette, "accent"),
+  bg-light: map-get($palette, "light"),
+  bg-dark: map-get($palette, "dark"),
+  bg-overlay: rgba(map-get($palette, "dark"), 0.8),
+  liberal: #00529c,
+  labor: #bf2232
+);
+
+$bubble-bg-opacity: 0.7;
