@@ -9,7 +9,7 @@ html {
 }
 
 html {
-  font-size: 10px;
+  font-size: $one-rem;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
@@ -17,15 +17,31 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: $base-fontsize;
   margin: 0;
   padding: 0;
   background: getCol("bg-page");
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-body,
-header,
+main {
+  flex: 1;
+}
+
+a {
+  color: inherit;
+}
+
+body > header,
 main,
-footer {
-  width: 100%;
+body > footer {
+  display: grid;
+  grid-template-columns: 1rem 1fr 1rem;
+
+  > * {
+    grid-column: 2;
+  }
 }
