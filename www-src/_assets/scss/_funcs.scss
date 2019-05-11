@@ -1,0 +1,5 @@
+// helper func to reduce the cumbersome map-get() syntax
+// and setup a global var for pallette for quick theme swapping.
+@function getCol($key) {
+  @return map-get($palette, $key);
+}

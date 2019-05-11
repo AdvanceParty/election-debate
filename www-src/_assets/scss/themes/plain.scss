@@ -28,35 +28,10 @@ body {
 }
 
 header {
-  display: grid;
-  position: fixed;
-  z-index: 10;
-  top:0;
-  left:0;
-  height: 100vh;
-  grid-template-columns: 1fr 1fr;
-  
-  div {
-    background-repeat: no-repeat;
-    background-position: fixed;
-    background-size: cover;
-    background-position: 50% 50%;
-    height: 100vh;
-  }
-
-  .shorten {  background-image: url('../img/bs.jpg') }
-  .pm {  background-image: url('../img/sm.jpg') }
 }
 
 
 main {
-  position: absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  min-height: 100vh;
-  z-index: 10;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 

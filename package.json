@@ -13,7 +13,7 @@
     "sample": "python rnn/debate.py -n 5 -t .8",
     "clean": "rm -rf dist",
     "start": "parcel www-src/index.html",
-    "build:www": "parcel build www-src/index.html -d dist/",
+    "build:www": "parcel build www-src/*.html -d dist/",
     "build": "npm run clean && npm run build:www"
   },
   "keywords": [
@@ -32,6 +32,7 @@
     "parcel": "^1.12.3",
     "postcss-assets": "^5.0.0",
     "posthtml": "^0.11.4",
+    "posthtml-expressions": "^1.1.0",
     "posthtml-modules": "^0.4.2",
     "sass": "^1.20.1"
   }
