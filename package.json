@@ -9,30 +9,30 @@
     "IE 11"
   ],
   "watch": {
-    "build:dev": "{www-src}/*"
+    "dev": "{www-src}/*"
   },
   "scripts": {
     "watch": "npm-watch",
     "generate": "python rnn/debate.py -n 30 -t .8 -o rnn/generated/debate.html",
-    "sample": "python rnn/debate.py -n 5 -t .8",
-    "clean": "rm -rf dist",
-    "build:dev": "parcel serve www-src/*.html",
-    "build:prod": "parcel build www-src/*.html -d dist/",
-    "prod": "npm run clean && npm run build:prod"
+    "clean": "rm -rf .cache dist",
+    "dev": "parcel serve www-src/*.html",
+    "build": "npm run clean && parcel build www-src/*.html -d dist/"
   },
   "keywords": [
     "neural-networks",
     "machine-learning",
     "politics"
   ],
-  "author": "Gil Fewster <gil@theroyals.com.au> (http://www.advanceparty.com)",
+  "author": "Advance Party <advanceparty@theroyals.com.au> (http://www.advanceparty.com)",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/runtime": "^7.4.4",
     "autoprefixer": "^9.5.1",
+    "concurrently": "^4.1.0",
     "cssnano": "^4.1.10",
+    "http-server": "^0.11.1",
     "npm-watch": "^0.6.0",
     "parcel": "^1.12.3",
     "postcss-assets": "^5.0.0",

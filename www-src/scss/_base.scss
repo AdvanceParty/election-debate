@@ -20,17 +20,16 @@ body {
   font-size: $base-fontsize;
   margin: 0;
   padding: 0;
-  background: getCol("bg-page");
+  background: getCol("bg-light");
 
   min-height: 100vh;
-  // min-width: 370px;
   display: flex;
   flex-direction: column;
 }
 
 main {
   flex: 1;
-  background: #dedede;
+  // background: #dedede;
 }
 
 a {

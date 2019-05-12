@@ -3,11 +3,14 @@
 // see getCol function in _funcs.scss file for accessing
 // colors from the global palette in scss files
 $palette-default: (
-  primary: #fff,
+  primary: #fbfef9,
   secondary: #333,
   tertiary: #333,
-  accent: #336699,
-  highlight: #990044,
-  light: #fff,
-  dark: #000
+  accent: #f0c808,
+  highlight: #220901,
+  light: #fbfef9,
+  dark: #000,
+  grey-light: #dedede,
+  grey-mid: #aaaaaa,
+  grey-dark: #555555
 );

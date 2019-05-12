@@ -1,3 +1,8 @@
 #pageHeader {
-  background: #ffffff;
+  text-align: center;
+  background: getCol("light");
+  padding-bottom: 2em;
+  p {
+    font-size: 0.75em;
+  }
 }

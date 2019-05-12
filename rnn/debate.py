@@ -99,7 +99,8 @@ def wrap_in_tag(content, tag_type, class_name=''):
 
 def format_dialog_as_html(content, speaker, class_name='', speaker_tag='h2'):
     speaker_tag = wrap_in_tag(speaker, speaker_tag)
-    section_content = speaker_tag + content
+    content_tag = wrap_on_tag(content, 'p')
+    section_content = speaker_tag + content_tag
     return wrap_in_tag(section_content, 'section', class_name)
 
 
