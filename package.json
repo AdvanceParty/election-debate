@@ -13,7 +13,8 @@
   },
   "scripts": {
     "watch": "npm-watch",
-    "generate": "python rnn/debate.py -n 30 -t .8 -o rnn/generated/debate.html",
+    "generate": "python rnn/debate.py -t .2 -o rnn/generated/debate.html -p models/pm/full -b models/shorten/full",
+    "copydebate": "cp rnn/generated/debate.html www-src/html-modules/content/debate.html",
     "clean": "rm -rf .cache dist",
     "dev": "parcel serve www-src/*.html",
     "build": "npm run clean && parcel build www-src/*.html -d dist/"

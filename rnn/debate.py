@@ -2,6 +2,16 @@ from textgenrnn import textgenrnn
 import argparse
 import random
 
+#  Regext to clean up crappy output:
+#   \s([\',\’])\s(t|ll|m|v|s)
+#   ->$1$2
+
+#   \s([\.,\,])
+#   ->$1
+
+#   \si([\s,\'])
+#   ->I$1
+
 parser = argparse.ArgumentParser(
     description="Neural Network Schmeural Network")
 parser.add_argument(
@@ -25,7 +35,7 @@ parser.add_argument(
     '-b',
     action='store',
     dest='bs_model',
-    default='models/shorten',
+    default='models/shorten/interviews_over_speeches',
     help='Model for Bill Shorten.'
 )
 
@@ -33,7 +43,7 @@ parser.add_argument(
     '-p',
     action='store',
     dest='pm_model',
-    default='models/pm',
+    default='models/pm/speeches',
     help='Model for Scott Morrison.'
 )
 parser.add_argument(
@@ -46,13 +56,20 @@ parser.add_argument(
 config = parser.parse_args()
 
 bs = textgenrnn(
-    'rnn/' + config.bs_model + "/textgenrnn_weights.hdf5",
-    name="shorten"
+    # 'rnn/' + config.bs_model + '/textgenrnn_weights.hdf5',
+    weights_path='rnn/' + config.bs_model + '/textgenrnn_weights.hdf5',
+    vocab_path='rnn/' + config.bs_model + '/textgenrnn_vocab.json',
+    config_path='rnn/' + config.bs_model + '/textgenrnn_config.json'
 )
+# bs.load('rnn/' + config.bs_model +
+#         '/textgenrnn_weights.hdf5', by_name=True)
 
 pm = textgenrnn(
-    'rnn/' + config.pm_model + "/textgenrnn_weights.hdf5",
-    name="pm"
+    # 'rnn/' + config.pm_model + '/textgenrnn_weights.hdf5',
+    weights_path='rnn/' + config.pm_model + '/textgenrnn_weights.hdf5',
+    vocab_path='rnn/' + config.pm_model + '/textgenrnn_vocab.json',
+    config_path='rnn/' + config.pm_model + '/textgenrnn_config.json'
+    # name="pm"
 )
 
 models = [
@@ -71,11 +88,15 @@ def get_question():
     return random.choice(lines)
 
 
+def get_lines():
+    return open('rnn/questions.txt').read().splitlines()
+
+
 def generate(model_info, prefix=''):
     result = model_info['model'].generate(
         temperature=config.temp,
         prefix=prefix,
-        max_gen_length=300 + len(prefix),
+        # max_gen_length=150 + len(prefix),
         return_as_list=True
     )
     return result[0]
@@ -99,21 +120,21 @@ def wrap_in_tag(content, tag_type, class_name=''):
 
 def format_dialog_as_html(content, speaker, class_name='', speaker_tag='h2'):
     speaker_tag = wrap_in_tag(speaker, speaker_tag)
-    content_tag = wrap_on_tag(content, 'p')
+    content_tag = wrap_in_tag(content, 'p')
     section_content = speaker_tag + content_tag
     return wrap_in_tag(section_content, 'section', class_name)
 
 
-def get_q_and_a():
+def get_q_and_a(question=''):
 
     # todo | Could all be much DRYer though this function
 
     lines = []
 
-    q = get_question()
-    seed = get_seed(q)
+    # q = get_question()
+    seed = get_seed(question)
     content = format_dialog_as_html(
-        q, interviewer['speaker'], interviewer['class_name'])
+        question, interviewer['speaker'], interviewer['class_name'])
     lines.append({'seed': seed, 'content': content})
 
     #  randomly reverse the models list (or don't)
@@ -160,10 +181,13 @@ def get_q_and_a():
 
 def getAll():
     interview = []
-    for x in range(0, config.generate_n):
-        dbug = f"Generating question/answer {x+1} of {config.generate_n}."
+    lines = get_lines()
+    # for x in range(0, config.generate_n):
+    for x in range(0, len(lines)):
+        print(lines[x])
+        dbug = f"Generating question/answer {x+1} of {len(lines)}."
         print(dbug)
-        interview += get_q_and_a()
+        interview += get_q_and_a(lines[x])
 
     return interview
 
