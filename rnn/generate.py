@@ -47,7 +47,7 @@ config = parser.parse_args()
 
 
 def save_output(content, path):
-    save_file = open(path, 'w')
+    save_file = open(path, 'a')
     save_file.write(content)
 
 
@@ -69,7 +69,7 @@ def generate(temp, prefix):
 
 def start():
     count = config.generate_n
-    item_delimiter = '\n'
+    newline = '\n'
     print(f"Generating {count} items from {config.model}. Stand by.")
     if (count > 999):
         print("Generating that many items could take quite a while. Make a cuppa.")
@@ -78,19 +78,17 @@ def start():
     elif(count > 20):
         print("This may take a minute or two.")
 
-    save_string = ''
     for x in range(0, count):
         print(f"Generating item {x+1} of {count}.")
-        item = generate(config.temp, config.prefix)
-        save_string += item[0] + '\n'
+        item = generate(config.temp, config.prefix)[0]
 
-    print(save_string)
+        print(item)
 
-    if (config.output_file):
-        save_output(save_string, config.output_file)
-        print('-----------------------------------------')
-        print(f"Saved to file {config.output_file}")
-        print('-----------------------------------------')
+        if (config.output_file):
+            save_output(item+newline, config.output_file)
+
+    print('-----------------------------------------')
+    print(f"Saved {count} item(s) to {config.output_file}")
 
 
 start()
