@@ -4,20 +4,12 @@ const tokenizer = new natural.SentenceTokenizer();
 
 const files = [
   {
-    inFile: '../trainingData/raw/bs_speech_and_interview.txt',
-    outFile: './bs_speech_and_interview_tokenized.txt',
+    inFile: '../trainingData/raw/morrison/morrison_answers_only.txt',
+    outFile: '../trainingData/tokenized/morrison_answers_tokenized.txt',
   },
   {
-    inFile: '../trainingData/raw/sm_speech_and_interview.txt',
-    outFile: './sm_speech_and_interview_tokenized.txt',
-  },
-  {
-    inFile: '../rnn/generated/pm.txt',
-    outFile: './bs_generated_tokenized.txt',
-  },
-  {
-    inFile: '../rnn/generated/shorten.txt',
-    outFile: './sm_generated_tokenized.txt',
+    inFile: '../trainingData/raw/shorten/shorten_answers_only.txt',
+    outFile: '../trainingData/tokenized/shorten_answers_tokenized.txt',
   },
 ];
 
