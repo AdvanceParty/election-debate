@@ -203,13 +203,13 @@ def start():
     for item in conversation_items:
         html_output += item['content'] + '\n'
 
+    print(html_output)
+
     if (config.output_file):
         save_output(html_output, config.output_file)
         print('-----------------------------------------')
         print(f"Saved to file {config.output_file}")
         print('-----------------------------------------')
-
-    print(html_output)
 
 
 start()
