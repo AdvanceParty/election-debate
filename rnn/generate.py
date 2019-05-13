@@ -82,10 +82,10 @@ def start():
         print(f"Generating item {x+1} of {count}.")
         item = generate(config.temp, config.prefix)[0]
 
-        print(item)
-
         if (config.output_file):
             save_output(item+newline, config.output_file)
+        else:
+            print(item)
 
     print('-----------------------------------------')
     print(f"Saved {count} item(s) to {config.output_file}")
