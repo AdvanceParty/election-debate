@@ -4,8 +4,8 @@ const tokenizer = new natural.SentenceTokenizer();
 
 const dataFiles = {
   questions: '../rnn/questions.txt',
-  bs: './bs_generated_tokenized.txt',
-  sm: './sm_generated_tokenized.txt',
+  bs: '../rnn/generated/shorten.txt',
+  sm: '../rnn/generated/pm.txt',
 };
 
 const loadData = dataFiles => {
@@ -26,35 +26,57 @@ const saveData = (data, fName, files) => {
   });
 };
 
+const wrapInTag = (content, tagName, className) => {
+  const classAttr = className ? `class='${className}'` : '';
+  return `<${tagName} ${classAttr}>${content}</${tagName}>`;
+};
+
 const makeDebate = dataFiles => {
-  const { questions, bs, sm } = loadData(dataFiles);
+  const data = loadData(dataFiles);
+  const debate = [];
+
   const speakers = {
-    bs: { name: 'SHORTEN', class="shorten", content: bs },
-    sm: { name: 'PRIME MINISTER', class="pm", content: sm },
+    host: { name: 'HOST', className: 'question', content: data.questions },
+    bs: { name: 'SHORTEN', className: 'shorten', content: data.bs },
+    sm: { name: 'PRIME MINISTER', className: 'pm', content: data.sm },
   };
 
-  let debate_str = '';
-
-  questions.map((q, index) => {
+  speakers.host.content.map((q, index) => {
     const firstSpeaker = Math.random() > 0.5 ? speakers.bs : speakers.sm;
     const secondSpeaker = firstSpeaker === speakers.sm ? speakers.bs : speakers.sm;
     const hasReply = Math.random() > 0.25;
     const hasRetort = hasReply && Math.random() > 0.75;
 
-    debate_str += `<section class='question'>HOST: ${q}\n`;
-    debate_str += `${firstSpeaker.name}: ${firstSpeaker.content.pop()}\n`;
+    debate.push(wrapInTag(`<h2>${speakers.host.name}</h2><p>${q}</p>`, 'section', speakers.host.className));
+    debate.push(
+      wrapInTag(
+        `<h2>${firstSpeaker.name}</h2><p>${firstSpeaker.content.pop()}</p>`,
+        'section',
+        firstSpeaker.className,
+      ),
+    );
 
     if (hasReply) {
-      debate_str += `${secondSpeaker.name}: ${secondSpeaker.content.pop()}\n`;
+      debate.push(
+        wrapInTag(
+          `<h2>${secondSpeaker.name}</h2><p>${secondSpeaker.content.pop()}</p>`,
+          'section',
+          secondSpeaker.className,
+        ),
+      );
     }
     if (hasRetort) {
-      debate_str += `${firstSpeaker.name}: ${firstSpeaker.content.pop()}\n`;
+      debate.push(
+        wrapInTag(
+          `<h2>${firstSpeaker.name}</h2><p>${firstSpeaker.content.pop()}</p>`,
+          'section',
+          firstSpeaker.className,
+        ),
+      );
     }
-
-    debate_str += '\n';
   });
 
-  return debate_str;
+  return debate;
 };
 
 // -----------------------------------------------
@@ -84,5 +106,5 @@ const shuffle = array => {
   return array;
 };
 
-const debate = makeDebate(dataFiles);
-console.log(debate);
+const debateArr = makeDebate(dataFiles);
+console.log(debateArr.join('\n'));
