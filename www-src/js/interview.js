@@ -21,7 +21,7 @@ const initInterview = interviewContainer => {
 const setMessage = (quote, speakerInfo) => {
   const el = createSection(speakerInfo.class, quote, speakerInfo.displayName);
   insertSection(el);
-
+  return el;
   console.log(`${speakerInfo.displayName} (class - ${speakerInfo.class}) says: ${quote}`);
 };
 
@@ -88,7 +88,10 @@ const getReplies = async () => {
     clearQuestionText();
 
     replies.map(reply => {
-      setMessage(reply.quote, reply.speaker);
+      const el = setMessage(reply.quote, reply.speaker);
+      el.scrollIntoView({ 
+        behavior: 'smooth' 
+      });
     });
   } catch (e) {
     console.log(e.message);
