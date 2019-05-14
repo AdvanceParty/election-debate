@@ -9,10 +9,11 @@
     "IE 11"
   ],
   "scripts": {
-    "start": "npm run clean && concurrently 'npm run dev' 'npm run serve'",
-    "build": "npm run clean && parcel build www-src/*.html -d dist/",
-    "dev": "parcel watch www-src/*.html -d dist/",
-    "serve": "netlify dev",
+    "start": "npm run clean && concurrently 'npm run dev:lambda' 'npm run dev:parcel'",
+    "build": "npm run clean && npm run build:lambda && parcel build www-src/*.html -d dist/",
+    "dev:parcel": "parcel www-src/*.html -d dist/",
+    "dev:lambda": "netlify-lambda serve www-src/lambda",
+    "build:lambda": "netlify-lambda build www-src/lambda",
     "generate": "python rnn/debate.py -t .2 -o rnn/generated/debate.html -p models/pm/full -b models/shorten/full",
     "copydebate": "cp rnn/generated/debate.html www-src/html-modules/content/debate.html",
     "clean": "rm -rf .cache dist"
@@ -33,6 +34,7 @@
     "cssnano": "^4.1.10",
     "natural": "^0.6.3",
     "netlify-cli": "^2.11.18",
+    "netlify-lambda": "^1.4.7",
     "parcel": "^1.12.3",
     "postcss-assets": "^5.0.0",
     "posthtml": "^0.11.4",

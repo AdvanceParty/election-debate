@@ -7,8 +7,8 @@ yarn-error.log*
 lerna-debug.log*
 
 # compiled
-dist/
-
+/dist
+/lambda
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
