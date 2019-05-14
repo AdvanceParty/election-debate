@@ -2,13 +2,17 @@ const navpanelId = '#siteNav';
 const navToggleSelector = "[data-action='toggleNav']";
 const navOpenClassname = 'open';
 const transitionDuration = 300;
+const { initInterview, getReplies } = require('./interview');
 
 const init = () => {
-  console.log('initing');
   const navToggles = Array.from(document.querySelectorAll(navToggleSelector));
-
-  console.log(navToggles);
   navToggles.map(el => (el.onclick = toggleNav));
+
+  // testing lambda func
+  if (document.querySelector('#interview')) {
+    initInterview(document.querySelector('#interview'));
+    getReplies();
+  }
 };
 
 const toggleNav = async e => {

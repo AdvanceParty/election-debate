@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm run clean && concurrently 'npm run dev' 'npm run serve'",
     "build": "npm run clean && parcel build www-src/*.html -d dist/",
-    "dev": "parcel serve www-src/*.html -d dist/",
+    "dev": "parcel watch www-src/*.html -d dist/",
     "serve": "netlify dev",
     "generate": "python rnn/debate.py -t .2 -o rnn/generated/debate.html -p models/pm/full -b models/shorten/full",
     "copydebate": "cp rnn/generated/debate.html www-src/html-modules/content/debate.html",
