@@ -89,8 +89,8 @@ const getReplies = async () => {
 
     replies.map(reply => {
       const el = setMessage(reply.quote, reply.speaker);
-      el.scrollIntoView({ 
-        behavior: 'smooth' 
+      el.scrollIntoView({
+        behavior: 'smooth',
       });
     });
   } catch (e) {
