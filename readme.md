@@ -1,12 +1,12 @@
 # It's RoboScoMo vs Cybershorten
 
-We’re building a pair of text-generating neural networks.
+Not sure who to vote for in Australia's 2019 Federal Election? Advance Party is here to help!
 
-One will be trained on transcripts of speeches and interviews delivered by Scott Morrison, the other on Bill Shorten’s interviews and speeches. And then we’re to and hold the fourth leader’s debate of the election.
+We’ve built a pair of text-generating neural networks. One network has been trained on transcripts of speeches and interviews delivered by Scott Morrison, the other on Bill Shorten’s interviews and speeches. You can see where this is going, right?
 
-The models will be prompted with real questions from previous debates, with each answer being fed back into the opposing model for a chance to rebut.
+This website makes the models available for anyone to interview. Ask them probing questions. Dig deep into their motivations and prinicples. Challenge them to convince you that they have the vision needed to steer the good ship 'Straya through the turbulent waters of our post-truth, social-media frenzied, climate apocalypse times.
 
-We’re also going to use the models to generate an electoral victory speech for each candidate. We’ll publish the debate and predicted victory speeches on Wednesday before the election weekend, and then return post-election to compare the real winner’s speech with our model’s effort.
+The neural networks probably won't give a direct, or even relevant, answer to your qwuestions. To be honest, the content may well be entirely nonsensical. We think that makes them eminently qualified for a career in politics.
 
 ## What, exactly, are they going to say?
 
@@ -27,8 +27,6 @@ The training data has been sourced mostly from the candidate’s own websites ht
 We’ve scraped these media pages for interview and speech transcripts and built training datasets of 70,000 words for Shorten and 50,000 words for Morrison.
 
 These are fairly small for modelling full language generation from scratch, but sufficient for style imitation when laid on top of a much larger model pre-trained on more generalised English language texts. At the moment, the base model is built from a combination of a politics subreddit, sections of Hansard records from 2018 and randomly selected media articles from Australian newspapers. The base models and training sets are still in the process of being refined but are already generating content with a distinctive tone for both candidates.
-
-The results will be hosted on a website with the debate content displayed on the landing page, and secondary pages which give further information about how the application works, an interactive tool to explore more of the generated content, and the predicted victory speeches.
 
 ### Credit where credit is due
 

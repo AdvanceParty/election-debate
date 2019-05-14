@@ -8,19 +8,19 @@ const setMessage = (quote, speakerInfo) => {
   console.log(`${speakerInfo.displayName} (class - ${speakerInfo.class}) says: ${quote}`);
 };
 
-const callAPI = async endpoint => {
-  let message;
-  setLoading(true);
-
-  try {
-    const response = await fetch(endpoint);
-    message = await response.json();
-  } catch (e) {
-    message = 'Error connecting to lamba functions. Check your config.';
-  } finally {
-    setLoading(false);
-    return message;
-  }
+const callAPI = endpoint => {
+  return new Promise(async function(resolve, reject) {
+    setLoading(true);
+    try {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      resolve(data);
+    } catch (e) {
+      reject(Error('*****WARNING******\n > Netlify lamba funcs are not available!'));
+    } finally {
+      setLoading(false);
+    }
+  });
 };
 
 const setLoading = isLoading => {
@@ -30,11 +30,19 @@ const setLoading = isLoading => {
 };
 
 const getReplies = async () => {
-  const replies = await callAPI(ENDPOINTS.GET_REPLIES);
+  try {
+    const replies = await callAPI(ENDPOINTS.GET_REPLIES);
+  } catch (e) {
+    console.log(e.message);
+  }
 
-  replies.map(reply => {
-    setMessage(reply.quote, reply.speaker);
-  });
+  try {
+    replies.map(reply => {
+      setMessage(reply.quote, reply.speaker);
+    });
+  } catch (e) {
+    console.log(e.message);
+  }
 };
 
 const test = () => {
