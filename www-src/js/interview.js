@@ -8,25 +8,15 @@ const setMessage = (quote, speakerInfo) => {
   console.log(`${speakerInfo.displayName} (class - ${speakerInfo.class}) says: ${quote}`);
 };
 
-const getReplies = async () => {
-  const resp = await callAPI(ENDPOINTS.GET_REPLIES);
-  console.log(resp);
-  const replies = JSON.parse(resp);
-
-  replies.map(reply => {
-    console.log(reply);
-    setMessage(reply.quote, reply.speaker);
-  });
-};
-
 const callAPI = async endpoint => {
-  setLoading(true);
   let message;
+  setLoading(true);
+
   try {
     const response = await fetch(endpoint);
     message = await response.json();
   } catch (e) {
-    message = 'Something went wrong. Oops.';
+    message = 'Error connecting to lamba functions. Check your config.';
   } finally {
     setLoading(false);
     return message;
@@ -34,6 +24,21 @@ const callAPI = async endpoint => {
 };
 
 const setLoading = isLoading => {
-  const wrapper = document.querySelector('#pitch');
-  isLoading ? wrapper.classList.add('loading') : wrapper.classList.remove('loading');
+  // const wrapper = document.querySelector('#pitch');
+  // isLoading ? wrapper.classList.add('loading') : wrapper.classList.remove('loading');
+  console.log(`Is loading: ${isLoading}`);
 };
+
+const getReplies = async () => {
+  const replies = await callAPI(ENDPOINTS.GET_REPLIES);
+
+  replies.map(reply => {
+    setMessage(reply.quote, reply.speaker);
+  });
+};
+
+const test = () => {
+  getReplies();
+};
+
+test();

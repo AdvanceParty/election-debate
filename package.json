@@ -8,16 +8,14 @@
     "> 1%",
     "IE 11"
   ],
-  "watch": {
-    "dev": "{www-src}/*"
-  },
   "scripts": {
-    "watch": "npm-watch",
+    "start": "concurrently 'npm run dev' 'npm run serve'",
+    "build": "npm run clean && parcel build www-src/*.html -d dist/",
+    "dev": "parcel watch build www-src/*.html -d dist/",
+    "serve": "netlify dev",
     "generate": "python rnn/debate.py -t .2 -o rnn/generated/debate.html -p models/pm/full -b models/shorten/full",
     "copydebate": "cp rnn/generated/debate.html www-src/html-modules/content/debate.html",
-    "clean": "rm -rf .cache dist",
-    "dev": "parcel serve www-src/*.html",
-    "build": "npm run clean && parcel build www-src/*.html -d dist/"
+    "clean": "rm -rf .cache dist"
   },
   "keywords": [
     "neural-networks",
@@ -33,14 +31,14 @@
     "autoprefixer": "^9.5.1",
     "concurrently": "^4.1.0",
     "cssnano": "^4.1.10",
-    "http-server": "^0.11.1",
     "natural": "^0.6.3",
-    "npm-watch": "^0.6.0",
+    "netlify-cli": "^2.11.18",
     "parcel": "^1.12.3",
     "postcss-assets": "^5.0.0",
     "posthtml": "^0.11.4",
     "posthtml-expressions": "^1.1.0",
     "posthtml-modules": "^0.4.2",
-    "sass": "^1.20.1"
+    "sass": "^1.20.1",
+    "watch": "^1.0.2"
   }
 }
