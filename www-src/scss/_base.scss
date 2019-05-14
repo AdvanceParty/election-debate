@@ -30,11 +30,39 @@ main {
 
 body > header,
 main,
+main .fullbleed,
 body > footer {
   display: grid;
   grid-template-columns: minmax(2em, auto) minmax(28rem, 75rem) minmax(2em, auto);
-
-  > * {
+  > *:not(.fullbleed) {
     grid-column: 2;
+  }
+
+  > .fullbleed {
+    grid-column: 1/-1;
+
+    &.padded {
+      // padding: 4.5em 0 5em;
+    }
+  }
+
+  .invert {
+    // background: getCol("accent");
+    background: linear-gradient(
+      to bottom,
+      getCol("liberal") 0%,
+      getCol("liberal") 50%,
+      getCol("labor") 50%,
+      getCol("labor") 100%
+    );
+    @include md-screen {
+      background: linear-gradient(
+        to right,
+        getCol("liberal") 0%,
+        getCol("liberal") 50%,
+        getCol("labor") 50%,
+        getCol("labor") 100%
+      );
+    }
   }
 }

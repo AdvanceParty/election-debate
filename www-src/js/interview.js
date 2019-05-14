@@ -19,7 +19,7 @@ const initInterview = interviewContainer => {
 };
 
 const setMessage = (quote, speakerInfo) => {
-  const el = createSection(speakerInfo.class, speakerInfo.displayName, quote);
+  const el = createSection(speakerInfo.class, quote, speakerInfo.displayName);
   insertSection(el);
 
   console.log(`${speakerInfo.displayName} (class - ${speakerInfo.class}) says: ${quote}`);
@@ -49,16 +49,19 @@ const setLoading = isLoading => {
   console.log(`Is loading: ${isLoading}`);
 };
 
-const createSection = (className, title, content) => {
+const createSection = (className, content, title = null) => {
   const el = document.createElement('section');
-  const h2 = document.createElement('h2');
   const body = document.createElement('p');
 
-  h2.innerText = title;
   body.innerText = content;
-
   el.classList.add(className);
-  el.appendChild(h2);
+
+  if (title) {
+    const titleEl = document.createElement('h3');
+    titleEl.innerText = title;
+    el.appendChild(titleEl);
+  }
+
   el.appendChild(body);
 
   return el;
@@ -80,7 +83,7 @@ const getReplies = async () => {
   try {
     const replies = await callAPI(ENDPOINTS.GET_REPLIES);
 
-    const questionEl = createSection('question', 'Question', getQuestionText());
+    const questionEl = createSection('question', getQuestionText(), '');
     insertSection(questionEl);
     clearQuestionText();
 

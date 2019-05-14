@@ -1,5 +1,42 @@
 #interview {
-  margin-top: 5em;
+  margin-top: 2em;
+
+  h2 {
+    font-size: 2.8em;
+    color: getCol("highlight");
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 0.6em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid getCol("highlight");
+  }
+
+  h3 {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0.4em;
+  }
+
+  .question {
+    padding: 0.4em 0.8em;
+    background: getCol("grey-light");
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .pm,
+  .shorten {
+    padding-left: 4px;
+  }
+  .pm {
+    border-left: 3px solid getCol("liberal");
+  }
+  .shorten {
+    border-left: 3px solid getCol("labor");
+  }
 }
 
 #interview #question {
@@ -14,24 +51,5 @@
     font-size: $base-fontsize;
     height: 4em;
     padding: 0.5em;
-  }
-
-  aside {
-    position: absolute;
-    text-align: center;
-    border: 1px solid getCol("dark");
-    background: rgba(getCol("dark"), 0.75);
-    width: 80px;
-    min-width: 200px;
-    left: 50%;
-    top: 50%;
-
-    // display: none;
-  }
-
-  &.loading {
-    aside {
-      display: block;
-    }
   }
 }

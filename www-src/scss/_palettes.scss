@@ -2,14 +2,27 @@
 // a global $palette var is used to allow easy swapping between different palette map options
 // see getCol function in _funcs.scss file for accessing
 // colors from the global palette in scss files
-$palette-default: (
+$palette-one: (
   primary: #fbfef9,
   secondary: #333,
   tertiary: #333,
-  accent: #f0c808,
-  highlight: #220901,
+  highlight: #f0c808,
+  accent: #220901,
   light: #ffffff,
   dark: #000000,
+  grey-light: #dedede,
+  grey-mid: #aaaaaa,
+  grey-dark: #555555
+);
+
+$palette-default: (
+  primary: #773344,
+  secondary: #404257,
+  tertiary: #333,
+  highlight: #028090,
+  accent: #404257,
+  light: #fbfbfb,
+  dark: #201a23,
   grey-light: #dedede,
   grey-mid: #aaaaaa,
   grey-dark: #555555

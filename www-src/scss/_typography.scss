@@ -4,7 +4,14 @@ body {
   font-family: "Arimo", sans-serif;
   font-weight: 300;
   color: getCol("body");
-  font-size: $base-fontsize;
+
+  font-size: $base-fontsize * 0.85;
+  @include md-screen {
+    font-size: $base-fontsize * 0.9;
+  }
+  @include lg-screen {
+    font-size: $base-fontsize;
+  }
 }
 
 h1,
@@ -20,10 +27,11 @@ h6 {
 }
 
 h1 {
-  font-size: 5em;
+  font-size: 4.75em;
   line-height: 0.928em;
   font-weight: 700;
   text-transform: uppercase;
+  margin-bottom: 0.4em;
 }
 
 p,
@@ -33,13 +41,28 @@ textarea {
   display: block;
   font-size: 1em;
   line-height: 1.421em;
-  color: rgba(0, 0, 0, 0.79);
   margin: 0px 0px 1.421em 0px;
   font-family: "Muli";
 }
 
 a {
   color: inherit;
+}
+
+.invert {
+  p,
+  li,
+  blockquote {
+    color: getCol("body-invert");
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: getCol("heading-invert");
+  }
 }
 
 // h1 {

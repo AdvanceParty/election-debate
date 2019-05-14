@@ -1,22 +1,19 @@
 $border-radius: 1em;
 
-main {
-  padding-top: 2em;
-}
-
 .tiled {
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 2em;
-  grid-column-gap: 2em;
 
   @include md-screen {
     grid-template-columns: 1fr 1fr;
   }
 
   > section {
-    // background: getCol("highlight");
-    border: 1px solid getCol("grey-light");
-    padding: 0 1em;
+    padding: 2em 1em 2em 3em;
+    &:nth-child(odd) {
+      text-align: right;
+      padding-left: 0;
+      padding: 2em 3em 2em 1em;
+    }
   }
 }

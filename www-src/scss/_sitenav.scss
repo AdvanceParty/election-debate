@@ -2,6 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   width: 100%;
   padding: 1em;
   overflow: hidden;
@@ -9,7 +10,7 @@
   transform: translate3d(0, -100%, 0);
 
   color: rgba(invert(getCol("bg-overlay")), 1);
-  background: getCol("bg-overlay");
+  background: getCol("dark");
 
   transition: transform 400ms ease-in-out;
 
