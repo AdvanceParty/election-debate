@@ -2,8 +2,8 @@ var fs = require('fs');
 const { randomIntFromRange, shuffle, arrayItemFromAnyInt } = require('./utils');
 
 const Speakers = [
-  { id: 'pm', displayName: 'Prime Minister', quotesPath: 'content/pm.json', class: 'pm' },
-  { id: 'shorten', displayName: 'Shorten', quotesPath: 'content/shorten.json', class: 'shorten' },
+  { id: 'pm', displayName: 'Prime Minister', quotesPath: 'pm.json', class: 'pm' },
+  { id: 'shorten', displayName: 'Shorten', quotesPath: 'shorten.json', class: 'shorten' },
 ];
 
 // only import quote files for speakers as needed
