@@ -11,8 +11,8 @@ $cols: (
   grey-light: map-get($palette, "grey-light"),
   grey-dark: map-get($palette, "grey-dark"),
   grey-mid: map-get($palette, "grey-midt"),
-  body: rgba(map-get($palette, "dark"), 0.75),
-  heading: map-get($palette, "accent"),
+  body: rgba(map-get($palette, "dark"), 0.8),
+  heading: rgba(map-get($palette, "dark"), 0.7),
   bg-light: map-get($palette, "light"),
   bg-dark: map-get($palette, "dark"),
   bg-overlay: rgba(map-get($palette, "dark"), 0.8),
@@ -26,6 +26,6 @@ $lg: 1200px;
 $xl: 1800px;
 
 $one-rem: 10px;
-$base-fontsize: 1.4rem;
+$base-fontsize: 1.5rem;
 
 $bubble-bg-opacity: 0.7;

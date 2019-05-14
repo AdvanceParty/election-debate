@@ -8,10 +8,8 @@ const init = () => {
   const navToggles = Array.from(document.querySelectorAll(navToggleSelector));
   navToggles.map(el => (el.onclick = toggleNav));
 
-  // testing lambda func
   if (document.querySelector('#interview')) {
     initInterview(document.querySelector('#interview'));
-    getReplies();
   }
 };
 

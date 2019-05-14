@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Arimo:400|Muli:400,700");
+
+body {
+  font-family: "Arimo", sans-serif;
+  font-weight: 300;
+  color: getCol("body");
+  font-size: $base-fontsize;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Arimo", sans-serif;
+  color: getCol("heading");
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 5em;
+  line-height: 0.928em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p,
+label,
+li,
+textarea {
+  display: block;
+  font-size: 1em;
+  line-height: 1.421em;
+  color: rgba(0, 0, 0, 0.79);
+  margin: 0px 0px 1.421em 0px;
+  font-family: "Muli";
+}
+
+a {
+  color: inherit;
+}
+
+// h1 {
+//   margin-bottom: 0.5em;
+// }

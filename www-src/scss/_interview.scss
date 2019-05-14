@@ -1,3 +1,37 @@
 #interview {
   margin-top: 5em;
 }
+
+#interview #question {
+  position: relative;
+
+  label {
+    margin-bottom: 0.5em;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: $base-fontsize;
+    height: 4em;
+    padding: 0.5em;
+  }
+
+  aside {
+    position: absolute;
+    text-align: center;
+    border: 1px solid getCol("dark");
+    background: rgba(getCol("dark"), 0.75);
+    width: 80px;
+    min-width: 200px;
+    left: 50%;
+    top: 50%;
+
+    // display: none;
+  }
+
+  &.loading {
+    aside {
+      display: block;
+    }
+  }
+}
