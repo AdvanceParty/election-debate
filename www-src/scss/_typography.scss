@@ -1,7 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Arimo:400|Muli:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400|Cabin:500");
+$bodyfont: "Open Sans", sans-serif;
+$titlefont: "Lora", serif;
+$headingfont: "Open Sans", sans-serif;
 
 body {
-  font-family: "Arimo", sans-serif;
+  font-family: $bodyfont;
   font-weight: 300;
 
   color: getCol("body");
@@ -21,18 +24,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Muli", sans-serif;
+  font-family: $headingfont;
   color: getCol("heading");
   font-weight: 400;
   font-style: normal;
-}
-
-h1 {
-  font-size: 4.75em;
-  line-height: 0.928em;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 0.4em;
 }
 
 p,
@@ -43,7 +38,7 @@ textarea {
   font-size: 1em;
   line-height: 1.421em;
   margin: 0px 0px 1.421em 0px;
-  font-family: "Muli";
+  font-family: $bodyfont;
 }
 
 a {
@@ -65,7 +60,3 @@ a {
     color: getCol("light");
   }
 }
-
-// h1 {
-//   margin-bottom: 0.5em;
-// }

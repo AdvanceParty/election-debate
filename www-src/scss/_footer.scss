@@ -1,6 +1,7 @@
 body > footer {
   z-index: 500;
   background-color: getCol("dark");
+  border-top: 5px solid getCol("highlight");
   color: getCol("light");
   padding: 1.4em 0 0.5rem 0;
   text-align: center;

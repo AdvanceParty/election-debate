@@ -2,6 +2,7 @@ html {
   font-size: $one-rem;
   margin: 0;
   padding: 0;
+  background: getCol("dark");
 }
 
 body {
@@ -24,7 +25,11 @@ main,
 main .fullbleed,
 body > footer {
   display: grid;
-  grid-template-columns: minmax(2em, auto) minmax(28rem, 75rem) minmax(2em, auto);
+  grid-template-columns: minmax(3em, auto) minmax(28rem, 65rem) minmax(3em, auto);
+  @include lg-screen {
+    grid-template-columns: minmax(2em, auto) minmax(28rem, 70rem) minmax(2em, auto);
+  }
+
   > *:not(.fullbleed) {
     grid-column: 2;
   }

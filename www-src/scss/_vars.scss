@@ -12,7 +12,9 @@ $cols: (
   body: rgba(map-get($palette, "dark"), 0.9),
   heading: rgba(map-get($palette, "dark"), 0.85),
   liberal: #00529c,
-  labor: #bf2232
+  liberal-tint: rgba(56, 182, 255, 0.58),
+  labor: #bf2232,
+  labor-tint: rgba(255, 168, 168, 0.78)
 );
 
 $sm: 500px;

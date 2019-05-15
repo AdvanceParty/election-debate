@@ -10,21 +10,17 @@ $border-left-size: 8px;
   }
 
   h2 {
+    text-transform: none;
     text-align: center;
-    font-size: 2.8em;
+    font-size: 2.2em;
     padding-bottom: 0.6em;
+    margin: 0.6em 0 0.3em 0;
     // border-bottom: 1px solid getCol("heading");
   }
 
   h4 {
     font-size: 1.2em;
     font-weight: bold;
-  }
-
-  h5 {
-    letter-spacing: 0.1em;
-    margin-top: 0;
-    margin-bottom: 1em;
   }
 
   .pm,
@@ -42,24 +38,18 @@ $border-left-size: 8px;
 
   .question {
     margin-top: 1.3em;
-    color: getCol("dark");
-    background-color: rgba(getCol("light"), 0.8);
-    border-top: 1px solid getCol("dark");
-    text-transform: uppercase;
-    // border-top: 1px solid getCol("dark");
+    color: getCol("light");
+    background-color: getCol("darl");
+    // text-transform: uppercase;
   }
 
-  .pm,
-  .shorten {
-    background: rgba(getCol("light"), 0.6);
-  }
   .pm {
-    border-right: $border-left-size solid getCol("liberal");
-    background: lighten(rgba(getCol("liberal"), 0.2), 50);
+    border-left: $border-left-size solid getCol("liberal");
+    background: getCol("liberal-tint");
   }
   .shorten {
     border-left: $border-left-size solid getCol("labor");
-    background: lighten(rgba(getCol("labor"), 0.2), 30);
+    background: getCol("labor-tint");
   }
 }
 
@@ -96,13 +86,22 @@ $border-left-size: 8px;
       margin: 0;
 
       button {
-        color: getCol("light");
+        color: getCol("dark");
         display: block;
         width: 100%;
         text-align: left;
-        border-radius: 5px;
-        padding: 0.6em 0.8em;
-        background-color: rgba(getCol("dark"), 0.6);
+
+        padding: 0.8em 1em 1em 1em;
+        line-height: 1.4em;
+        border: none;
+        border-bottom: 1px dashed getCol("dark");
+        background-color: rgba(getCol("light"), 0.8);
+      }
+
+      &:last-child {
+        button {
+          border-bottom: none;
+        }
       }
     }
   }
@@ -110,12 +109,12 @@ $border-left-size: 8px;
   #submit {
     border-radius: 8px;
     padding: 0.6em 1em;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-    border: 1px solid getCol("dark");
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid getCol("highlight");
     margin-bottom: 2em;
 
     &:hover {
-      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
     }
   }
 }
@@ -132,6 +131,7 @@ $border-left-size: 8px;
       font-size: 1em;
       padding: 0;
       margin: 0;
+      font-weight: 400;
       text-align: center;
     }
 
@@ -141,13 +141,13 @@ $border-left-size: 8px;
     }
 
     textarea {
-      // grid-column: 2;
       height: 100%;
     }
 
     #submit {
       justify-self: center;
       grid-column: 1/-1;
+      margin-top: 3em;
     }
   }
 }
