@@ -1,57 +1,65 @@
-$speaker-border-width: 5px;
-
+$border-left-size: 8px;
 #interview {
   // margin-top: 1em;
   h2,
   h4,
   h5 {
-    color: getCol("highlight");
+    color: getCol("heading");
     text-transform: uppercase;
-    text-align: center;
     margin-bottom: 0;
   }
 
   h2 {
+    text-align: center;
     font-size: 2.8em;
     padding-bottom: 0.6em;
-    border-bottom: 1px solid getCol("highlight");
+    border-bottom: 1px solid getCol("heading");
   }
 
   h4 {
     font-size: 1.2em;
     font-weight: bold;
-    text-align: center;
   }
 
   h5 {
     letter-spacing: 0.1em;
     margin-top: 0;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
+  }
+
+  .pm,
+  .shorten,
+  .question {
+    padding-left: $border-left-size + 5px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0.7em 1em;
+
+    p {
+      margin: 0;
+    }
   }
 
   .question {
-    padding: 0.4em 0.8em;
-    color: getCol("");
+    margin-top: 1.3em;
+    color: getCol("dark");
     background-color: rgba(getCol("light"), 0.8);
-    border-left: $speaker-border-width solid getCol("dark");
-    padding-left: $speaker-border-width + 5px;
-    margin-top: 1em;
-
-    p {
-      margin-bottom: 0;
-    }
+    border-top: 1px solid getCol("dark");
+    text-transform: uppercase;
+    // border-top: 1px solid getCol("dark");
   }
 
   .pm,
   .shorten {
-    padding-left: $speaker-border-width + 5px;
     background: rgba(getCol("light"), 0.6);
   }
   .pm {
-    border-left: $speaker-border-width solid getCol("liberal");
+    border-right: $border-left-size solid getCol("liberal");
+    background: lighten(rgba(getCol("liberal"), 0.2), 50);
   }
   .shorten {
-    border-left: $speaker-border-width solid getCol("labor");
+    border-left: $border-left-size solid getCol("labor");
+    background: lighten(rgba(getCol("labor"), 0.2), 30);
   }
 }
 
@@ -80,23 +88,15 @@ $speaker-border-width: 5px;
 
   li {
     display: block;
+    margin: 0;
 
     button {
-      // &::before {
-      //   content: "💬";
-      //   font-size: 2em;
-      //   display: block;
-      //   float: left;
-      //   height: 100%;
-      //   margin: 0 0.5em 0 0;
-      // }
-
       color: getCol("body-invert");
       display: block;
       width: auto;
       text-align: left;
       border-radius: 5px;
-      padding: 0.6em 0.8em 0.6em 1.8em;
+      padding: 0.6em 0.8em;
       background-color: rgba(getCol("dark"), 0.6);
     }
   }
