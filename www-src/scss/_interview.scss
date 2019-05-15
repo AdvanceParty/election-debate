@@ -39,7 +39,7 @@ $border-left-size: 8px;
   .question {
     margin-top: 1.3em;
     color: getCol("light");
-    background-color: getCol("darl");
+    background-color: getCol("dark");
     // text-transform: uppercase;
   }
 
@@ -56,7 +56,6 @@ $border-left-size: 8px;
 #interview #question {
   margin-top: 0.8em;
   position: relative;
-  background: getCol("dark");
 
   label {
     margin-bottom: 0.5em;
