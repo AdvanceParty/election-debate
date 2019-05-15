@@ -42,25 +42,7 @@ body > footer {
     grid-column: 1/-1;
   }
 
-  .padded { margin-bottom: 2em }
-
-  .invert {
-    // background: getCol("accent");
-    background: linear-gradient(
-      to bottom,
-      getCol("liberal") 0%,
-      getCol("liberal") 50%,
-      getCol("labor") 50%,
-      getCol("labor") 100%
-    );
-    @include md-screen {
-      background: linear-gradient(
-        to right,
-        getCol("liberal") 0%,
-        getCol("liberal") 50%,
-        getCol("labor") 50%,
-        getCol("labor") 100%
-      );
-    }
+  .padded {
+    margin-bottom: 2em;
   }
 }

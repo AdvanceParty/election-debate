@@ -1,32 +1,45 @@
 #home {
-  // @include portrait-screen {
-  //   background: url("../img/home-bg-tall.jpg");
-  //   background-repeat: no-repeat;
-  //   background-size: cover;
-  //   background-position: center center;
-  //   background-color: rgba(getCol("dark"), 0.8);
-  // }
-
-  // @include landscape-screen {
-  background: url("../img/home-bg-wide.jpg");
+  background: url("../img/bg-texture.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  background-color: rgba(getCol("light"), 0.85);
-  // }
+  background-color: rgba(gold, 0.5); // rgba(getCol("light"), 0.2);
+  background-blend-mode: hard-light;
 
-  background-blend-mode: overlay;
-  main {
-    // align-content: end;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: ".";
+    position: absolute;
+    bottom: 5rem;
+    z-index: 1;
+    width: 200px;
+    height: 300px;
+
+    @include md-screen {
+      width: 350px;
+      height: 500px;
+    }
+
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
-  // p,
-  // h1,
-  // h2,
-  // h3,
-  // li {
-  //   color: getCol("light");
-  // }
+  &::before {
+    background-position: bottom left;
+    left: 0;
+    background-image: url("../img/shorten-trans.png");
+  }
+  &::after {
+    background-position: bottom right;
+    right: 0;
+    background-image: url("../img/morrison-trans.png");
+  }
+
+  main {
+    z-index: 2;
+  }
 }
 
 .tiled {
@@ -38,8 +51,6 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  margin-bottom: 2em;
-
   > section {
     padding: 2em 1em 2em 3em;
     &:nth-child(odd) {
@@ -47,5 +58,25 @@
       padding-left: 0;
       padding: 2em 3em 2em 1em;
     }
+  }
+}
+
+.invert {
+  // background: getCol("accent");
+  background: linear-gradient(
+    to bottom,
+    rgba(getCol("liberal"), 0.7) 0%,
+    rgba(getCol("liberal"), 0.7) 50%,
+    rgba(getCol("labor"), 0.7) 50%,
+    rgba(getCol("labor"), 0.7) 100%
+  );
+  @include md-screen {
+    background: linear-gradient(
+      to right,
+      rgba(getCol("liberal"), 0.7) 0%,
+      rgba(getCol("liberal"), 0.7) 50%,
+      rgba(getCol("labor"), 0.7) 50%,
+      rgba(getCol("labor"), 0.7) 100%
+    );
   }
 }

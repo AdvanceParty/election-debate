@@ -17,6 +17,27 @@
   padding-bottom: 2em;
 }
 
+body#home #pageHeader {
+  $col: getCol("dark");
+  $startAt: 10%;
+  $opacity-a: 0.5;
+  $opacity-b: 0.4;
+  $opacity-c: 0;
+
+  h1 {
+    color: getCol("light");
+    margin: 1em 0 0 0;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  }
+
+  background: linear-gradient(
+    to bottom,
+    rgba($col, $opacity-a) 0%,
+    rgba($col, $opacity-b) $startAt,
+    rgba($col, $opacity-c) 100%
+  );
+}
+
 body:not(#home) #pageHeader {
   background-color: getCol("secondary");
   &:after {
