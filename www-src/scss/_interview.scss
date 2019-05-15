@@ -1,3 +1,5 @@
+$speaker-border-width: 5px;
+
 #interview {
   // margin-top: 1em;
   h2,
@@ -30,9 +32,9 @@
   .question {
     padding: 0.4em 0.8em;
     color: getCol("");
-    padding-left: 5px;
     background-color: rgba(getCol("light"), 0.8);
-    border-left: 3px solid getCol("dark");
+    border-left: $speaker-border-width solid getCol("dark");
+    padding-left: $speaker-border-width + 5px;
     margin-top: 1em;
 
     p {
@@ -42,14 +44,14 @@
 
   .pm,
   .shorten {
-    padding-left: 5px;
+    padding-left: $speaker-border-width + 5px;
     background: rgba(getCol("light"), 0.6);
   }
   .pm {
-    border-left: 3px solid getCol("liberal");
+    border-left: $speaker-border-width solid getCol("liberal");
   }
   .shorten {
-    border-left: 3px solid getCol("labor");
+    border-left: $speaker-border-width solid getCol("labor");
   }
 }
 
@@ -77,7 +79,6 @@
   }
 
   li {
-    
     display: block;
 
     button {

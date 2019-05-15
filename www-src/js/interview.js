@@ -81,7 +81,8 @@ const updateQuestionBox = content => {
 };
 
 const setMessage = (quote, speakerInfo) => {
-  const el = createSection(speakerInfo.class, quote, speakerInfo.displayName);
+  // const el = createSection(speakerInfo.class, quote, speakerInfo.displayName);
+  const el = createSection(speakerInfo.class, quote);
   insertSection(el);
   return el;
   console.log(`${speakerInfo.displayName} (class - ${speakerInfo.class}) says: ${quote}`);
