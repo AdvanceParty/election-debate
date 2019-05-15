@@ -87,6 +87,7 @@ $border-left-size: 8px;
   }
   li {
     display: block;
+    margin: 0;
 
     button {
       color: getCol("body-invert");
