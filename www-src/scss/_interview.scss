@@ -54,7 +54,9 @@ $border-left-size: 8px;
 }
 
 #interview #question {
+  margin-top: 0.8em;
   position: relative;
+  background: getCol("dark");
 
   label {
     margin-bottom: 0.5em;
