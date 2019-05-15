@@ -76,12 +76,6 @@ const updateQuestionBox = content => {
   ui.textArea.value = content;
 };
 
-const setMessage = (quote, speakerInfo) => {
-  const el = createSection(speakerInfo.class, quote, speakerInfo.displayName);
-  insertReply(el);
-  return el;
-};
-
 const callAPI = endpoint => {
   return new Promise(async function(resolve, reject) {
     setLoading(true);
@@ -106,24 +100,6 @@ const setLoading = isLoading => {
   console.log(`Is loading: ${isLoading}`);
 };
 
-const createSection = (className, content, title = null) => {
-  const el = document.createElement('section');
-  const body = document.createElement('p');
-
-  body.innerText = content;
-  el.classList.add(className);
-
-  if (title) {
-    const titleEl = document.createElement('h3');
-    titleEl.innerText = title;
-    el.appendChild(titleEl);
-  }
-
-  el.appendChild(body);
-
-  return el;
-};
-
 const getQuestionText = () => {
   return ui.textArea.value;
 };
@@ -145,17 +121,40 @@ const getReplies = async () => {
 
     const questionEl = createSection('question', getQuestionText(), '');
     insertReply(questionEl);
-    clearQuestionText();
-    getSuggestions(3);
+
     replies.map(reply => {
-      const el = setMessage(reply.quote, reply.speaker);
+      const el = createSection(reply.speaker.class, quote);
+      insertReply(el);
+
       el.scrollIntoView({
         behavior: 'smooth',
       });
     });
+
+    // clean up the UI
+    clearQuestionText();
+    getSuggestions(3);
   } catch (e) {
     console.log(e.message);
   }
+};
+
+const createSection = (className, content, title = null) => {
+  const el = document.createElement('section');
+  const body = document.createElement('p');
+
+  body.innerText = content;
+  el.classList.add(className);
+
+  if (title) {
+    const titleEl = document.createElement('h3');
+    titleEl.innerText = title;
+    el.appendChild(titleEl);
+  }
+
+  el.appendChild(body);
+
+  return el;
 };
 
 module.exports.initInterview = initInterview;
