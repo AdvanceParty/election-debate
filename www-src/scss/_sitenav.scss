@@ -1,3 +1,29 @@
+#nav-button {
+  position: absolute;
+
+  z-index: 50;
+  width: 100px;
+  height: 2.6em;
+  left: 10px;
+  bottom: -2.4em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 0.8em;
+    width: 100%;
+    height: 100%;
+  }
+
+  border-radius: 0 0 5px 5px;
+  background-color: getCol("dark");
+  color: getCol("light");
+}
+
 #siteNav {
   position: fixed;
   top: 0;
@@ -5,7 +31,7 @@
   z-index: 100;
   width: 100%;
   padding: 1em;
-  overflow: hidden;
+  // overflow: hidden;
 
   transform: translate3d(0, -100%, 0);
 
@@ -20,6 +46,7 @@
 
   h2 {
     font-size: 1.2em;
+    color: getCol("light");
   }
 
   ul {

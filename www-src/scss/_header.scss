@@ -1,16 +1,6 @@
 #pageHeader {
   position: relative;
   text-align: center;
-
-  button {
-    position: absolute;
-    top: 0.5em;
-    left: 0;
-    z-index: 50;
-    width: 100px;
-    padding: 0.3em 1em;
-  }
-
   h2 {
     line-height: 1.4em;
     color: getCol("light");
@@ -28,7 +18,15 @@
   h1 {
     color: getCol("light");
     margin: 1em 0 0 0;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+    // text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+  }
+
+  h3 {
+    text-transform: uppercase;
+    margin-top: 0.2em;
+    color: getCol("light");
+    border-top: 1px solid getCol("light");
+    padding-top: 0.2em;
   }
 
   background: linear-gradient(
