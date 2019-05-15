@@ -123,7 +123,7 @@ const getReplies = async () => {
     insertReply(questionEl);
 
     replies.map(reply => {
-      const el = createSection(reply.speaker.class, quote);
+      const el = createSection(reply.speaker.class, reply.quote);
       insertReply(el);
 
       el.scrollIntoView({
