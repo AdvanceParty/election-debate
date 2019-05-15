@@ -1,3 +1,20 @@
+@mixin portrait-screen {
+  @media only screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin landscape-screen {
+  @media only screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin xs-screen {
+  @media (max-width: $sm - 1) {
+    @content;
+  }
+}
 @mixin xs-screen {
   @media (max-width: $sm - 1) {
     @content;

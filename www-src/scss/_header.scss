@@ -1,7 +1,6 @@
 #pageHeader {
   position: relative;
   text-align: center;
-  background-color: getCol("secondary");
 
   button {
     position: absolute;
@@ -12,6 +11,14 @@
     padding: 0.3em 1em;
   }
 
+  h2 {
+    line-height: 1.4em;
+  }
+  padding-bottom: 2em;
+}
+
+body:not(#home) #pageHeader {
+  background-color: getCol("secondary");
   &:after {
     position: absolute;
     left: 0;
@@ -28,14 +35,8 @@
 
   p,
   h1,
-  h2 {
+  h2,
+  h3 {
     color: getCol("light");
   }
-
-  h2 {
-    // font-size: 1.8em;
-    line-height: 1.4em;
-  }
-
-  padding-bottom: 2em;
 }

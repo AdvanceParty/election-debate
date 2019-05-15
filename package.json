@@ -11,7 +11,7 @@
   "scripts": {
     "start": "npm run clean && concurrently 'npm run dev:lambda' 'npm run dev:parcel'",
     "build": "npm run clean && npm run build:lambda && parcel build www-src/*.html -d dist/",
-    "dev:parcel": "parcel www-src/*.html -d dist/",
+    "dev:parcel": "parcel serve ./**/*.html",
     "dev:lambda": "netlify-lambda serve www-src/lambda",
     "build:lambda": "netlify-lambda build www-src/lambda",
     "generate": "python rnn/debate.py -t .2 -o rnn/generated/debate.html -p models/pm/full -b models/shorten/full",

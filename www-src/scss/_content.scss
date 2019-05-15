@@ -1,12 +1,44 @@
-$border-radius: 1em;
+#home {
+  // @include portrait-screen {
+  //   background: url("../img/home-bg-tall.jpg");
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   background-position: center center;
+  //   background-color: rgba(getCol("dark"), 0.8);
+  // }
+
+  // @include landscape-screen {
+  background: url("../img/home-bg-wide.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(getCol("light"), 0.85);
+  // }
+
+  background-blend-mode: overlay;
+  main {
+    // align-content: end;
+  }
+
+  // p,
+  // h1,
+  // h2,
+  // h3,
+  // li {
+  //   color: getCol("light");
+  // }
+}
 
 .tiled {
   display: grid;
   grid-template-columns: 1fr;
-
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
   @include md-screen {
     grid-template-columns: 1fr 1fr;
   }
+
+  margin-bottom: 2em;
 
   > section {
     padding: 2em 1em 2em 3em;

@@ -1,4 +1,6 @@
 body > footer {
-  padding: 8em 0 2rem;
+  background-color: getCol("bg-dark");
+  color: getCol("body-invert");
+  padding: 2em 0 0;
   font-size: 0.75em;
 }
