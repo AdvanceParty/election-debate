@@ -10,7 +10,7 @@ $cols: (
   dark: map-get($palette, "dark"),
   grey-light: map-get($palette, "grey-light"),
   grey-dark: map-get($palette, "grey-dark"),
-  grey-mid: map-get($palette, "grey-midt"),
+  grey-mid: map-get($palette, "grey-mid"),
   body: rgba(map-get($palette, "dark"), 0.9),
   body-invert: rgba(map-get($palette, "light"), 0.85),
   heading: rgba(map-get($palette, "dark"), 0.85),
