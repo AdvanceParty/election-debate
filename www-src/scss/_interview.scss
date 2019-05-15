@@ -53,3 +53,43 @@
     padding: 0.5em;
   }
 }
+
+#interview #suggestions {
+  margin-bottom: 1.5em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    display: grid;
+    grid-template-columns: 2.5em 1fr;
+
+    &::before {
+      content: "💬";
+      font-size: 2em;
+      display: block;
+      grid-column: 1;
+      align-self: center;
+    }
+
+    button {
+      grid-column: 2;
+      width: auto;
+      text-align: left;
+      border-radius: 5px;
+      padding: 0.3em 0.8em;
+    }
+  }
+}
+
+#interview #submit {
+  border-radius: 8px;
+  padding: 0.6em 1em;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  border: 1px solid getCol("dark");
+
+  &:hover {
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.5);
+  }
+}

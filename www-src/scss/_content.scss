@@ -1,4 +1,4 @@
-#home {
+body {
   background: url("../img/bg-texture.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,10 +35,6 @@
     background-position: bottom right;
     right: 0;
     background-image: url("../img/morrison-trans.png");
-  }
-
-  main {
-    z-index: 2;
   }
 }
 

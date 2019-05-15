@@ -1,7 +1,6 @@
 var fs = require('fs');
 const pmContent = require('./pm.json');
 const shortenContent = require('./shorten.json');
-
 const { randomIntFromRange, shuffle, arrayItemFromAnyInt } = require('./utils');
 
 const Speakers = [
@@ -9,8 +8,6 @@ const Speakers = [
   { id: 'shorten', displayName: 'Shorten', quotesPath: './shorten.json', class: 'shorten' },
 ];
 
-// only import quote files for speakers as needed
-// because the quotes data files are big
 const quotes = {
   pm: pmContent.quotes,
   shorten: shortenContent.quotes,
@@ -26,19 +23,6 @@ const loadFile = fName => {
 
 const getQuote = async speaker => {
   return new Promise(async function(resolve, reject) {
-    console.log(`Get quote for ${speaker.id}`);
-    // if (!quotes[speaker.id]) {
-    //   try {
-    //     const data = await loadFile(speaker.quotesPath);
-    //     const obj = JSON.parse(data);
-    //     const arr = obj.quotes;
-    //     quotes[speaker.id] = arr;
-    //     shuffle(quotes[speaker.id]);
-    //   } catch (e) {
-    //     reject(e);
-    //   }
-    // }
-    console.log(quotes[speaker.id][0]);
     const quote = quotes[speaker.id].pop();
     resolve(quote);
   });

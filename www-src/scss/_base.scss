@@ -26,6 +26,10 @@ body {
 
 main {
   flex: 1;
+
+  // z-index ensures main content elements sit above
+  // any layered background images and effects.
+  z-index: 2;
 }
 
 body > header,
