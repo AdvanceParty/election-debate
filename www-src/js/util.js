@@ -1,3 +1,6 @@
+const dQuery = query => document.querySelector(query);
+const dQueryAll = query => document.querySelectorAll(query);
+
 const randomIntFromRange = (min, max) => {
   if (min >= max) throw Error('First argument must be smaller than second argument');
   return min + Math.floor(Math.random() * max);
@@ -48,3 +51,5 @@ const shuffle = array => {
 module.exports.randomIntFromRange = randomIntFromRange;
 module.exports.arrayItemFromAnyInt = arrayItemFromAnyInt;
 module.exports.shuffle = shuffle;
+module.exports.dQuery = dQuery;
+module.exports.dQueryAll = dQueryAll;

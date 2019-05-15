@@ -5,9 +5,8 @@ body {
   font-weight: 300;
 
   color: getCol("body");
-  // color: getCol("light");
-
   font-size: $base-fontsize * 0.85;
+
   @include md-screen {
     font-size: $base-fontsize * 0.9;
   }
@@ -22,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Arimo", sans-serif;
+  font-family: "Muli", sans-serif;
   color: getCol("heading");
   font-weight: 400;
   font-style: normal;
@@ -55,7 +54,7 @@ a {
   p,
   li,
   blockquote {
-    color: getCol("body-invert");
+    color: getCol("light");
   }
   h1,
   h2,
@@ -63,7 +62,7 @@ a {
   h4,
   h5,
   h6 {
-    color: getCol("heading-invert");
+    color: getCol("light");
   }
 }
 

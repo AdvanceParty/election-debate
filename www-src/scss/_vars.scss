@@ -2,8 +2,6 @@
 $palette: $palette-default;
 $cols: (
   primary: map-get($palette, "primary"),
-  secondary: map-get($palette, "secondary"),
-  tertiary: map-get($palette, "tertiary"),
   accent: map-get($palette, "accent"),
   highlight: map-get($palette, "highlight"),
   light: map-get($palette, "light"),
@@ -12,12 +10,7 @@ $cols: (
   grey-dark: map-get($palette, "grey-dark"),
   grey-mid: map-get($palette, "grey-mid"),
   body: rgba(map-get($palette, "dark"), 0.9),
-  body-invert: rgba(map-get($palette, "light"), 0.85),
   heading: rgba(map-get($palette, "dark"), 0.85),
-  heading-invert: rgba(map-get($palette, "light"), 0.9),
-  bg-light: map-get($palette, "light"),
-  bg-dark: map-get($palette, "dark"),
-  bg-overlay: rgba(map-get($palette, "dark"), 0.8),
   liberal: #00529c,
   labor: #bf2232
 );

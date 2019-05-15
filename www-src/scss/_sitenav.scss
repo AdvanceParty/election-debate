@@ -35,7 +35,7 @@
 
   transform: translate3d(0, -100%, 0);
 
-  color: rgba(invert(getCol("bg-overlay")), 1);
+  color: getCol("light");
   background: getCol("dark");
 
   transition: transform 400ms ease-in-out;

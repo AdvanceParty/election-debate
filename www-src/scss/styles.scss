@@ -1,9 +1,18 @@
+// Override defaults
+@import "resets";
+
+// <-- utils -->
+// vars, functions, mixins
 @import "palettes";
 @import "vars";
 @import "mixins";
 @import "funcs";
+
+// layouts and document/body level
 @import "base";
 @import "typography";
+
+// template areas
 @import "sitenav";
 @import "header";
 @import "content";

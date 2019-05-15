@@ -36,27 +36,3 @@
     rgba($col, $opacity-c) 100%
   );
 }
-
-// body:not(#home) #pageHeader {
-//   background-color: getCol("secondary");
-//   &:after {
-//     position: absolute;
-//     left: 0;
-//     top: 0;
-//     width: 100%;
-//     height: 100%;
-//     content: ".";
-//     background-image: url("../img/header-bg.jpg");
-//     background-position: center center;
-//     background-size: cover;
-//     mix-blend-mode: overlay;
-//     z-index: 1;
-//   }
-
-//   p,
-//   h1,
-//   h2,
-//   h3 {
-//     color: getCol("light");
-//   }
-// }

@@ -1,28 +1,30 @@
-const navpanelId = '#siteNav';
-const navToggleSelector = "[data-action='toggleNav']";
-const navOpenClassname = 'open';
-const transitionDuration = 300;
-const { initInterview, getReplies } = require('./interview');
+const { initInterview } = require('./interview');
+const { QUERY } = require('./config');
+const { dQuery, dQueryAll } = require('./util');
 
 const init = () => {
-  const navToggles = Array.from(document.querySelectorAll(navToggleSelector));
-  navToggles.map(el => (el.onclick = toggleNav));
+  initNavToggleButtons();
+  initInterviewUI();
+};
 
-  if (document.querySelector('#interview')) {
-    initInterview(document.querySelector('#interview'));
+const initNavToggleButtons = () => {
+  const toggleElements = dQueryAll(QUERY.DATA_ATTRIBUTES.NAV_TOGGLE);
+  Array.from(toggleElements).map(el => (el.onclick = toggleNav));
+};
+
+const initInterviewUI = () => {
+  if (dQuery(QUERY.IDS.INTERVIEW)) {
+    initInterview(dQuery(QUERY.IDS.INTERVIEW));
   }
 };
 
 const toggleNav = async e => {
-  console.log('toggle nav');
-  document.querySelector(navpanelId).classList.toggle(navOpenClassname);
+  const toggleClass = QUERY.CLASSES.NAV_OPEN;
+  const toggleElements = dQuery(QUERY.DATA_ATTRIBUTES.NAV_TOGGLE);
+  const navPanel = dQuery(QUERY.IDS.NAV_PANEL);
 
-  const navToggles = Array.from(document.querySelectorAll(navToggleSelector));
-  navToggles.map(btn => btn.classList.toggle(navOpenClassname));
-
-  if (e.target.href !== undefined) {
-    delayLinkEvent(e, transitionDuration);
-  }
+  navPanel.classList.toggle(toggleClass);
+  Array.from(toggleElements).map(btn => btn.classList.toggle(toggleClass));
 };
 
 init();
