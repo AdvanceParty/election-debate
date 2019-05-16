@@ -119,6 +119,7 @@ const getReplies = async () => {
     // clean up the UI
     clearQuestionText();
     getSuggestions(3);
+    validateInputText();
   } catch (e) {
     console.log(e.message);
   }
