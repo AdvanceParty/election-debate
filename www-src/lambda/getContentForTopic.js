@@ -1,7 +1,7 @@
 const PATHS = {
-  TOPIC_MODELS: './www-src/lambda',
-  CONTENT: './www-src/lambda',
-  UTILS: './www-src/lambda',
+  TOPIC_MODELS: './',
+  CONTENT: './',
+  UTILS: './',
 };
 
 const loki = require('lokijs');

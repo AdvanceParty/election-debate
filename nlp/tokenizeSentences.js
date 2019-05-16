@@ -2,6 +2,9 @@ const fs = require('fs');
 const natural = require('natural');
 const tokenizer = new natural.SentenceTokenizer();
 
+const smQuotes = require('../www-src/lambda/pm.json').quotes;
+const bsQuotes = require('../www-src/lambda/shorten.json').quotes;
+
 const files = [
   {
     inFile: '../trainingData/raw/morrison/morrison_answers_only.txt',

@@ -32,6 +32,7 @@
     "autoprefixer": "^9.5.1",
     "concurrently": "^4.1.0",
     "cssnano": "^4.1.10",
+    "keyword-extractor": "0.0.16",
     "natural": "^0.6.3",
     "netlify-cli": "^2.11.18",
     "netlify-lambda": "^1.4.7",
@@ -44,6 +45,11 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
-    "lokijs": "^1.5.6"
+    "lokijs": "^1.5.6",
+    "nlcst-to-string": "^2.0.2",
+    "retext": "^6.0.1",
+    "retext-keywords": "^4.0.2",
+    "to-vfile": "^5.0.2",
+    "vfile": "^4.0.0"
   }
 }
