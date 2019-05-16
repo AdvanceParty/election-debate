@@ -42,5 +42,8 @@
     "posthtml-modules": "^0.4.2",
     "sass": "^1.20.1",
     "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "lokijs": "^1.5.6"
   }
 }
