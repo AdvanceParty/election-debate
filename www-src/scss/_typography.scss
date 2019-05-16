@@ -30,6 +30,13 @@ h6 {
   font-style: normal;
 }
 
+h2 {
+  font-family: $titlefont;
+  text-transform: uppercase;
+  font-size: 1.05em;
+  font-weight: 700;
+}
+
 p,
 label,
 li,

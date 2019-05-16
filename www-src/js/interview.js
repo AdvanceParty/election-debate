@@ -29,7 +29,6 @@ const initInterview = interviewContainer => {
 };
 
 const validateInputText = inputElement => {
-  console.log(`validate ${inputElement}`);
   const btn = ui.submitButton;
   btn.disabled = inputElement.value.length < 5;
 };
