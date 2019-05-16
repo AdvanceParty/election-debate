@@ -1,26 +1,17 @@
 $border-left-size: 8px;
+$border-radius: 5px;
+
 #interview {
-  // margin-top: 1em;
-  h2,
-  h4,
-  h5 {
+  h2 {
     color: getCol("heading");
     text-transform: uppercase;
     margin-bottom: 0;
-  }
 
-  h2 {
     text-transform: none;
     text-align: center;
     font-size: 2.2em;
     padding-bottom: 0.6em;
     margin: 0.6em 0 0.3em 0;
-    // border-bottom: 1px solid getCol("heading");
-  }
-
-  h4 {
-    font-size: 1.2em;
-    font-weight: bold;
   }
 
   .pm,
@@ -38,40 +29,85 @@ $border-left-size: 8px;
 
   .question {
     margin-top: 1.3em;
-    color: getCol("light");
-    background-color: getCol("dark");
-    // text-transform: uppercase;
+    color: getCol("dark");
+    background-color: rgba(getCol("grey-dark"), 0.15);
+    border-radius: $border-radius $border-radius 0 0;
+    border-left: $border-left-size solid getCol("dark");
+    border-bottom: 1px solid getCol("dark");
   }
 
   .pm {
     border-left: $border-left-size solid getCol("liberal");
-    background: getCol("liberal-tint");
+    border-bottom: 1px solid getCol("liberal");
+    background: getCol("light");
   }
   .shorten {
     border-left: $border-left-size solid getCol("labor");
-    background: getCol("labor-tint");
+    border-bottom: 1px solid getCol("labor");
+    background: getCol("light");
   }
 }
 
 #interview #question {
-  margin-top: 0.8em;
+  margin-top: 1.8em;
   position: relative;
 
-  label {
-    margin-bottom: 0.5em;
-  }
-}
+  background: #fbfbfb;
+  padding: 2em 2em 2em 1.5em;
+  border-radius: 0 0 $border-radius $border-radius;
+  margin-bottom: 3em;
 
-#interview {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(5, auto);
+  grid-template-areas:
+    "suggestions-header"
+    "suggestions"
+    "diy-header"
+    "diy"
+    "submit";
+
+  grid-row-gap: 1em;
+  grid-column-gap: 1em;
+
+  #suggestions-header {
+    grid-area: suggestions-header;
+  }
+  #diy-header {
+    grid-area: diy-header;
+  }
+  #diy {
+    grid-area: diy;
+  }
+  #suggestions {
+    grid-area: suggestions;
+  }
+
+  #suggestions-header,
+  #diy-header,
+  #diy,
+  #suggestions,
+  #submit {
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0;
+  }
+
   textarea {
     width: 100%;
-    font-size: 1em;
-    height: 4em;
-    padding: 0.5em;
+    height: 100%;
+    border: 1px solid getCol("grey-mid");
+    border-radius: $border-radius $border-radius $border-radius $border-radius;
+    background-color: getCol("light");
   }
 
   #suggestions {
     margin-bottom: 0.5em;
+    border-radius: $border-radius $border-radius $border-radius $border-radius;
 
     @include md-screen {
       font-size: 0.9em;
@@ -95,13 +131,22 @@ $border-left-size: 8px;
         padding: 0.8em 1em 1em 1em;
         line-height: 1.4em;
         border: none;
-        border-bottom: 1px dashed getCol("dark");
-        background-color: rgba(getCol("light"), 0.8);
+        border-bottom: 1px dashed getCol("grey-mid");
+        cursor: pointer;
+        background-color: rgba(getCol("grey-mid"), 0.2);
+        outline: none;
+      }
+
+      &:first-child {
+        button {
+          border-radius: $border-radius $border-radius 0 0;
+        }
       }
 
       &:last-child {
         button {
           border-bottom: none;
+          border-radius: 0 0 $border-radius $border-radius;
         }
       }
     }
@@ -112,43 +157,40 @@ $border-left-size: 8px;
     padding: 0.6em 1em;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
     border: 1px solid getCol("highlight");
-    margin-bottom: 2em;
+    transition: all 0.5s;
+
+    justify-self: center;
+    grid-area: submit;
 
     &:hover {
       box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5);
+      transition: all 0.2s;
+    }
+
+    &:disabled {
+      box-shadow: none;
+      border-color: rgba(getCol("dark"), 0.3);
+      color: rgba(getCol("dark"), 0.3);
+      background-color: rgba(getCol("dark"), 0.08);
     }
   }
-}
 
-@include md-screen {
-  #interview #question {
-    display: grid;
+  @include md-screen {
+    grid-template-rows: repeat(4, auto);
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 1em;
-    grid-row-gap: 1em;
+    grid-template-areas:
+      "suggestions-header diy-header"
+      "suggestions diy"
+      "submit submit";
 
-    h4,
-    h5 {
+    h4 {
       font-size: 1em;
-      padding: 0;
-      margin: 0;
       font-weight: 400;
       text-align: center;
     }
 
-    #suggestions {
-      justify-items: space-evenly;
-      margin-bottom: 0;
-    }
-
-    textarea {
-      height: 100%;
-    }
-
     #submit {
-      justify-self: center;
-      grid-column: 1/-1;
-      margin-top: 3em;
+      margin-top: 1em;
     }
   }
 }

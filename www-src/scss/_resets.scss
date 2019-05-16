@@ -24,6 +24,14 @@ textarea {
   margin: 0; /* 2 */
 }
 
+textarea {
+  padding: 0.5em;
+  overflow-y: hidden;
+  resize: none;
+  outline: 0;
+  box-shadow: none;
+}
+
 /**
    * Show the overflow in IE.
    * 1. Show the overflow in Edge.

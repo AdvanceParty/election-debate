@@ -20,7 +20,18 @@ const initInterview = interviewContainer => {
     getReplies();
   };
 
+  ui.textArea.addEventListener('input', function(e) {
+    validateInputText(e.target);
+  });
+
+  validateInputText(ui.textArea);
   getSuggestions(3);
+};
+
+const validateInputText = inputElement => {
+  console.log(`validate ${inputElement}`);
+  const btn = ui.submitButton;
+  btn.disabled = inputElement.value.length < 5;
 };
 
 const getSuggestions = count => {
@@ -38,6 +49,7 @@ const getSuggestions = count => {
     btn.innerText = sampleQuestions[i];
     btn.onclick = e => {
       updateQuestionBox(e.target.innerText);
+      getReplies();
     };
   }
 
@@ -46,6 +58,7 @@ const getSuggestions = count => {
 
 const updateQuestionBox = content => {
   ui.textArea.value = content;
+  validateInputText(ui.textArea);
 };
 
 const callAPI = endpoint => {
