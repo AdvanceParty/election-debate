@@ -2,8 +2,27 @@
 
 // const pmContent = require('./pm.json');
 // const shortenContent = require('./shorten.json');
+var vfile = require('to-vfile');
+var retext = require('retext');
+var keywords = require('retext-keywords');
+var toString = require('nlcst-to-string');
+
 const { randomIntFromRange, shuffle, arrayItemFromAnyInt } = require('./utils');
-const getContentForTopic = require('./getContentForTopic');
+const { getContentForTopic } = require('./getContentForTopic');
+
+const extractKeywords = str => {
+  const kw = [];
+
+  retext()
+    .use(keywords)
+    .process(str, (err, file) => {
+      if (err) throw err;
+      const words = file.data.keywords.map(item => {
+        kw.push(toString(item.matches[0].node).toLowerCase());
+      });
+    });
+  return shuffle(kw);
+};
 
 // const Speakers = [
 //   { id: 'pm', displayName: 'Prime Minister', quotesPath: './pm.json', class: 'pm' },
@@ -38,16 +57,22 @@ const Speakers = [
 //   });
 // };
 
-exports.handler = async event => {
+exports.handler = async (event, context) => {
   const replyCount = randomIntFromRange(1, 3);
   const startWith = randomIntFromRange(0, Speakers.length - 1);
   const payload = [];
 
-  const quotes = getContentForTopic('tax', replyCount);
+  const body = JSON.parse(event.body);
+  const question = body.question;
+  const keywords = extractKeywords(question);
+
+  console.log(keywords);
+
+  const quotes = getContentForTopic(keywords[0], replyCount);
 
   for (let i = 0; i < replyCount; i++) {
     const speaker = arrayItemFromAnyInt(startWith + i, Speakers);
-    const quote = quotes[speaker.id][i];
+    const quote = quotes[speaker.topicId][i];
     payload.push({ speaker, quote });
   }
 

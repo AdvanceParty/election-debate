@@ -1,7 +1,7 @@
 const PATHS = {
-  TOPIC_MODELS: './',
-  CONTENT: './',
-  UTILS: './',
+  TOPIC_MODELS: '.',
+  CONTENT: '.',
+  UTILS: '.',
 };
 
 const loki = require('lokijs');
@@ -42,12 +42,20 @@ const getTopicInfo = term => {
   };
 };
 
-module.exports = (topic, count = 3) => {
-  const bs = topics.findOne({ term: topic, speaker: SPEAKERS.SHORTEN });
-  const sm = topics.findOne({ term: topic, speaker: SPEAKERS.MORRISON });
+const getContentForTopic = (topic, count = 3) => {
+  const bs = topics.findOne({ term: topic, speaker: SPEAKERS.SHORTEN }) || { lines: [] };
+  const sm = topics.findOne({ term: topic, speaker: SPEAKERS.MORRISON }) || { lines: [] };
 
   const bsLines = shuffle(bs.lines);
   const smLines = shuffle(sm.lines);
+
+  // pad the array if the were no (nor not enough) direct keyword matches
+  while (bsLines.length < count) {
+    bsLines.push(randomIntFromRange(0, CONTENT.bs.length - 1));
+  }
+  while (smLines.length < count) {
+    smLines.push(randomIntFromRange(0, CONTENT.sm.length - 1));
+  }
 
   const result = {
     bs: new Array(),
@@ -63,3 +71,5 @@ module.exports = (topic, count = 3) => {
 
   return result;
 };
+
+module.exports.getContentForTopic = getContentForTopic;

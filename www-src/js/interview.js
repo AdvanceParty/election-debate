@@ -60,11 +60,11 @@ const updateQuestionBox = content => {
   validateInputText(ui.textArea);
 };
 
-const callAPI = endpoint => {
+const callAPI = (endpoint, body) => {
   return new Promise(async function(resolve, reject) {
     setLoading(true);
     try {
-      const response = await fetch(endpoint);
+      const response = await fetch(endpoint, { method: 'post', body });
       const data = await response.json();
       resolve(data);
     } catch (e) {
@@ -101,9 +101,11 @@ const insertReply = el => {
 
 const getReplies = async () => {
   try {
-    const replies = await callAPI(ENDPOINTS.GET_REPLIES);
+    const questionText = getQuestionText();
+    const fetchBody = JSON.stringify({ question: questionText });
+    const replies = await callAPI(ENDPOINTS.GET_REPLIES, fetchBody);
 
-    const questionEl = createSection('question', getQuestionText(), '');
+    const questionEl = createSection('question', questionText, '');
     insertReply(questionEl);
 
     replies.map(reply => {
