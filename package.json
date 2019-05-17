@@ -25,10 +25,6 @@
   ],
   "author": "Advance Party <advanceparty@theroyals.com.au> (http://www.advanceparty.com)",
   "license": "MIT",
-  "spares": {
-    "keyword-extractor": "0.0.16",
-    "natural": "^0.6.3"
-  },
   "dependencies": {
     "lokijs": "^1.5.6",
     "nlcst-to-string": "^2.0.2",
@@ -38,9 +34,6 @@
     "vfile": "^4.0.0"
   },
   "devDependencies": {
-    "babel": "*",
-    "babel-core": "*",
-    "babel-loader": "*",
     "@babel/core": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/runtime": "^7.4.4",
