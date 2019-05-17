@@ -1,6 +1,11 @@
 const { shuffle } = require('./util');
 const { ENDPOINTS } = require('./config');
 
+let state = {
+  loading: null,
+  validInput: null,
+};
+
 const sampleQuestions = require('./sampleQuestions');
 const ui = {
   interviewContainer: null,
@@ -24,13 +29,50 @@ const initInterview = interviewContainer => {
     validateInputText(e.target);
   });
 
+  setState({ loading: false });
+
   validateInputText(ui.textArea);
   getSuggestions(3);
 };
 
+const onInputValidationChange = () => {
+  updateSubmitButtonState();
+};
+
+const onLoadingStateChange = () => {
+  updateContainerClassList();
+  updateSubmitButtonState();
+};
+
+const updateContainerClassList = () => {
+  const { loading } = state;
+  loading
+    ? ui.interviewContainer.classList.add('loading')
+    : ui.interviewContainer.classList.remove('loading');
+};
+
+const updateSubmitButtonState = () => {
+  const { loading, validInput } = state;
+  ui.submitButton.disabled = loading || !validInput;
+};
+
+const setState = updaterObject => {
+  const oldState = { ...state };
+  const newState = { ...state, ...updaterObject };
+  state = newState;
+
+  // ToDo: could just iterate object keys and fire on[key]change
+  if (oldState.loading != newState.loading) {
+    onLoadingStateChange();
+  }
+  if (oldState.validInput != newState.validInput) {
+    onInputValidationChange();
+  }
+};
+
 const validateInputText = inputElement => {
-  const btn = ui.submitButton;
-  btn.disabled = inputElement.value.length < 5;
+  const isValid = inputElement.value.length >= 5;
+  setState({ validInput: isValid });
 };
 
 const getSuggestions = count => {
@@ -62,7 +104,7 @@ const updateQuestionBox = content => {
 
 const callAPI = (endpoint, body) => {
   return new Promise(async function(resolve, reject) {
-    setLoading(true);
+    setState({ loading: true });
     try {
       const response = await fetch(endpoint, { method: 'post', body });
       const data = await response.json();
@@ -70,18 +112,9 @@ const callAPI = (endpoint, body) => {
     } catch (e) {
       reject(Error('*****WARNING******\n > Netlify lamba funcs are not available!'));
     } finally {
-      setLoading(false);
+      setState({ loading: false });
     }
   });
-};
-
-const setLoading = isLoading => {
-  // const wrapper = document.querySelector('#pitch');
-  // isLoading ? wrapper.classList.add('loading') : wrapper.classList.remove('loading');
-  isLoading
-    ? ui.interviewContainer.classList.add('loading')
-    : ui.interviewContainer.classList.remove('loading');
-  console.log(`Is loading: ${isLoading}`);
 };
 
 const getQuestionText = () => {
@@ -102,6 +135,10 @@ const insertReply = el => {
 const getReplies = async () => {
   try {
     const questionText = getQuestionText();
+
+    clearQuestionText();
+    validateInputText(ui.textArea);
+
     const fetchBody = JSON.stringify({ question: questionText });
     const replies = await callAPI(ENDPOINTS.GET_REPLIES, fetchBody);
 
@@ -118,9 +155,7 @@ const getReplies = async () => {
     });
 
     // clean up the UI
-    clearQuestionText();
     getSuggestions(3);
-    validateInputText();
   } catch (e) {
     console.log(e.message);
   }
