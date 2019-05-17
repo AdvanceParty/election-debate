@@ -148,11 +148,11 @@ const getReplies = async () => {
     replies.map(reply => {
       const el = createSection(reply.speaker.class, reply.quote);
       insertReply(el);
-
-      el.scrollIntoView({
-        behavior: 'smooth',
-      });
     });
+
+    // questionEl.scrollIntoView({
+    //   behavior: 'smooth',
+    // });
 
     // clean up the UI
     getSuggestions(3);

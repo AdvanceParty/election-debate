@@ -1,50 +1,67 @@
 <module href="/html-modules/templates/home.html">
-  <section id="intro">
-    <h2>Rebuilding politicians with neural networks</h2>
+  <section class="intro fullbleed">
+    <section class="banner">
+      <p>
+        What happens when you train neural networks on Scott Morrison and Bill Shorten's language? Well it's
+        scary how far you can get to replicating in just a couple of days.
+      </p>
+    </section>
+
+    <section class="tiled">
+      <section>
+        <section class="content">
+          <h3>Interview the Bots</h3>
+          <p>
+            Join the press club! Throw some curly questions to RoboScomo and Cyberbill.
+          </p>
+        </section>
+        <section class="cta">
+          <a href="interview.html">Interview the Leaders</a>
+        </section>
+      </section>
+      <section>
+        <section class="content">
+          <h3>Campaign Posters</h3>
+          <p>
+            Some choice quotes from our bots, dropped into election campaign posters.
+          </p>
+        </section>
+        <section class="cta">
+          <a href="campaign-posters.html">Campaign Posters</a>
+        </section>
+      </section>
+    </section>
+  </section>
+
+  <section>
+    <h2>What's it all about?</h2>
     <p>
-      What happens when you train neural networks on Scott Morrison and Bill Shorten's language? Well it's
-      scary how far you can get to replicating in just a couple of days.
+      Recently, we've been spending some time tinkering with neural networks. About a week before the
+      Australian Federal election, we noticed that one of our models was behaving like a politician on the
+      campaign trial: stubbornly churning out whatever it wanted to, regardless of what we were asking it.</p>
+      <p>Which led a to a burst of absurd inspiration:</p>
+    </p>
+    <blockquote>
+      What would happen if we could build two neural networks, one for Bill Shorten and one for Scott
+      Morrison, and engaged them in a conversation?
+    </blockquote>
+    <p>
+      Would they make any sense? Would the models pick up on specific themes, phrases and or ideas from each
+      leader? After all, so much of political campaigning is about hammering away at the same themes and songs
+      over and over again -- perfect fodder for neural networks which thrive on pattern recognition and
+      imitation.
     </p>
     <p>
-      Advance Party's crack at using neural networks to dissect the authenticity - or lack thereof - coming
-      from our political leaders was a mid-campaign thought.
-    </p>
-    <p>
-      We trained Cyberbill and RoboScoMo on more than 120,000 words spoken by their human counterparts. The
-      results aren't perfect, but you can already see pet themes and phrases starting to pop up for both
-      leaders. Since the accuracy of a neural network improves over time with more training and more data, you
-      can start to get a taste of how accurate something like this could become.
+      So we trained Cyberbill and RoboScoMo on more than 120,000 words of transcripts from speeches and
+      interviews with their human counterparts. The results aren't perfect, but you can already see pet themes
+      and phrases starting to pop up for both leaders.
     </p>
     <p>
       You can <a href="interview.html">try it out for yourself</a>, by asking your own questions or picking
-      samples from real campaign interviews. The answers won't fool anybody just yet, but you should see even
-      with a very short amount of training, the models have started to pick up on key phrases and styles of
-      each leader.
+      samples from real campaign interviews. The answers won't fool anybody just yet, but you can start to
+      imagine how much more accurate the modelling could become with more data and longer training.
     </p>
-  </section>
-  <section class="tiled">
-    <section>
-      <section class="content">
-        <h3>Interview the Leaders</h3>
-        <p>
-          Ask them anything. We promise the answers will be at least as illuminating as the real thing.
-        </p>
-      </section>
-      <section class="cta">
-        <a href="interview.html">Interview the Leaders</a>
-      </section>
-    </section>
-    <section>
-      <section class="content">
-        <h3>Campaign Posters</h3>
-        <p>
-          We took a few choice samples from the neural network and dropped them into election campaign
-          posters.
-        </p>
-      </section>
-      <section class="cta">
-        <a href="campaign-posters.html">Campaign Posters</a>
-      </section>
-    </section>
+    <h3>What is a neural network?</h3>
+    <p>In nutshell, it's a type of programming architecture designed to be exceptionally good at finding patterns in data, and generating predictions or analysis based on those patterns. Check out the <a href="neural-networks.html">neural networks</a> page.</p>
   </section>
 </module>

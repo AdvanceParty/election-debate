@@ -2,6 +2,7 @@
 $palette: $palette-default;
 $cols: (
   primary: map-get($palette, "primary"),
+  success: map-get($palette, "success"),
   accent: map-get($palette, "accent"),
   highlight: map-get($palette, "highlight"),
   light: map-get($palette, "light"),

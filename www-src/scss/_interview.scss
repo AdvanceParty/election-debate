@@ -2,18 +2,6 @@ $border-left-size: 8px;
 $border-radius: 5px;
 
 #interview {
-  h2 {
-    color: getCol("heading");
-    text-transform: uppercase;
-    margin-bottom: 0;
-
-    text-transform: none;
-    text-align: center;
-    font-size: 2.2em;
-    padding-bottom: 0.6em;
-    margin: 0.6em 0 0.3em 0;
-  }
-
   .pm,
   .shorten,
   .question {
@@ -52,15 +40,16 @@ $border-radius: 5px;
   margin-top: 1.8em;
   position: relative;
 
-  background: #fbfbfb;
+  background: rgba(getCol("dark"), 0.1);
   padding: 2em 2em 2em 1.5em;
-  border-radius: 0 0 $border-radius $border-radius;
+  border-radius: $border-radius;
   margin-bottom: 3em;
 
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(6, auto);
   grid-template-areas:
+    "heading"
     "suggestions-header"
     "suggestions"
     "diy-header"
@@ -69,6 +58,17 @@ $border-radius: 5px;
 
   grid-row-gap: 1em;
   grid-column-gap: 1em;
+
+  #heading {
+    grid-area: heading;
+    color: getCol("heading");
+
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.2em;
+    padding-bottom: 0.5em;
+    margin: 0;
+  }
 
   #suggestions-header {
     grid-area: suggestions-header;
@@ -133,7 +133,7 @@ $border-radius: 5px;
         border: none;
         border-bottom: 1px dashed getCol("grey-mid");
         cursor: pointer;
-        background-color: rgba(getCol("grey-mid"), 0.2);
+        background-color: rgba(getCol("light"), 0.8);
         outline: none;
       }
 
@@ -176,9 +176,10 @@ $border-radius: 5px;
   }
 
   @include md-screen {
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(5, auto);
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
+      "heading heading"
       "suggestions-header diy-header"
       "suggestions diy"
       "submit submit";

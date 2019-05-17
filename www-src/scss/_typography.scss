@@ -67,3 +67,12 @@ a {
     color: getCol("light");
   }
 }
+
+blockquote {
+  font-family: $headingfont;
+  font-size: 1.7em;
+  line-height: 1.6em;
+  font-style: italic;
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+}
