@@ -25,15 +25,28 @@
   ],
   "author": "Advance Party <advanceparty@theroyals.com.au> (http://www.advanceparty.com)",
   "license": "MIT",
+  "spares": {
+    "keyword-extractor": "0.0.16",
+    "natural": "^0.6.3"
+  },
+  "dependencies": {
+    "lokijs": "^1.5.6",
+    "nlcst-to-string": "^2.0.2",
+    "retext": "^6.0.1",
+    "retext-keywords": "^4.0.2",
+    "to-vfile": "^5.0.2",
+    "vfile": "^4.0.0"
+  },
   "devDependencies": {
+    "babel": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
     "@babel/core": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/runtime": "^7.4.4",
     "autoprefixer": "^9.5.1",
     "concurrently": "^4.1.0",
     "cssnano": "^4.1.10",
-    "keyword-extractor": "0.0.16",
-    "natural": "^0.6.3",
     "netlify-cli": "^2.11.18",
     "netlify-lambda": "^1.4.7",
     "parcel": "^1.12.3",
@@ -43,13 +56,5 @@
     "posthtml-modules": "^0.4.2",
     "sass": "^1.20.1",
     "watch": "^1.0.2"
-  },
-  "dependencies": {
-    "lokijs": "^1.5.6",
-    "nlcst-to-string": "^2.0.2",
-    "retext": "^6.0.1",
-    "retext-keywords": "^4.0.2",
-    "to-vfile": "^5.0.2",
-    "vfile": "^4.0.0"
   }
 }
