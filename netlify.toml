@@ -2,3 +2,8 @@
   command = "npm run build"
   functions = "lambda" #  netlify-lambda reads this
   publish = "dist"
+
+[context.staging] # 'staging' is a branch name
+  command = "npm run build"
+  functions = "lambda" #  netlify-lambda reads this
+  publish = "dist"
