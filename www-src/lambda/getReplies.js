@@ -1,7 +1,3 @@
-// var fs = require('fs');
-
-// const pmContent = require('./pm.json');
-// const shortenContent = require('./shorten.json');
 var vfile = require('to-vfile');
 var retext = require('retext');
 var keywords = require('retext-keywords');
@@ -36,26 +32,6 @@ const Speakers = [
   { id: 'pm', displayName: 'Prime Minister', class: 'pm', topicId: 'sm' },
   { id: 'shorten', displayName: 'Shorten', class: 'shorten', topicId: 'bs' },
 ];
-
-// const quotes = {
-//   pm: pmContent.quotes,
-//   shorten: shortenContent.quotes,
-// };
-
-// const loadFile = fName => {
-//   return new Promise(function(resolve, reject) {
-//     fs.readFile(fName, 'utf8', (err, data) => {
-//       err ? reject(err) : resolve(data);
-//     });
-//   });
-// };
-
-// const getQuote = async speaker => {
-//   return new Promise(async function(resolve, reject) {
-//     const quote = quotes[speaker.id].pop();
-//     resolve(quote);
-//   });
-// };
 
 exports.handler = async (event, context) => {
   const replyCount = randomIntFromRange(1, 3);
