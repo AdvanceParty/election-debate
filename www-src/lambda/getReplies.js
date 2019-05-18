@@ -34,16 +34,14 @@ const Speakers = [
 ];
 
 exports.handler = async (event, context) => {
-  const replyCount = randomIntFromRange(1, 3);
-  const startWith = randomIntFromRange(0, Speakers.length - 1);
   const payload = [];
-
   const body = JSON.parse(event.body);
+
   const question = body.question;
   const keywords = extractKeywords(question);
-
-  console.log(keywords);
-
+  const startWith = randomIntFromRange(0, Speakers.length - 1);
+  const rand = Math.random();
+  const replyCount = rand < 0.15 ? 3 : rand < 0.8 ? 2 : 1;
   const quotes = getContentForTopic(keywords[0], replyCount);
 
   for (let i = 0; i < replyCount; i++) {

@@ -9,8 +9,8 @@
     "IE 11"
   ],
   "scripts": {
-    "start": "npm run build && concurrently 'netlify dev' 'npm run watch:site'",
-    "watch": "parcel watch ./**/*.html",
+    "start": "npm run build && npm run watch",
+    "watch": "concurrently 'parcel www-src*/.html' 'netlify dev'",
     "build": "npm run clean && npm run build:lambda && npm run build:site",
     "clean": "rm -rf .cache dist lambda",
     "build:site": "parcel build www-src/*.html -d dist/",
