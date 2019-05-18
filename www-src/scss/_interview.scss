@@ -10,6 +10,11 @@ $border-radius: 5px;
     overflow: hidden;
     padding: 0.7em 1em;
 
+    background-size: 25px auto;
+    background-position-y: 50%;
+    background-position-x: 98%;
+    background-repeat: no-repeat;
+
     p {
       margin: 0;
     }
@@ -27,12 +32,17 @@ $border-radius: 5px;
   .pm {
     border-left: $border-left-size solid getCol("liberal");
     border-bottom: 1px solid getCol("liberal");
-    background: getCol("light");
+    background-color: getCol("light");
+    background-image: url("../img/logo_lib.png");
+    padding-right: 40px;
   }
+
   .shorten {
     border-left: $border-left-size solid getCol("labor");
     border-bottom: 1px solid getCol("labor");
-    background: getCol("light");
+    background-color: getCol("light");
+    background-image: url("../img/logo_labor.png");
+    padding-right: 40px;
   }
 }
 
