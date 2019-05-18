@@ -9,14 +9,12 @@
     "IE 11"
   ],
   "scripts": {
-    "start": "npm run clean && concurrently 'npm run dev:lambda' 'npm run dev:parcel'",
-    "build": "npm run clean && npm run build:lambda && parcel build www-src/*.html -d dist/",
-    "dev:parcel": "parcel serve ./**/*.html",
-    "dev:lambda": "netlify-lambda serve www-src/lambda",
+    "start": "npm run clean && concurrently 'netlify dev' 'npm run watch:site'",
+    "build": "npm run clean && npm run build:site && npm run build:lambda",
+    "watch:site": "parcel watch ./**/*.html",
     "build:lambda": "netlify-lambda build www-src/lambda",
-    "generate": "python rnn/debate.py -t .2 -o rnn/generated/debate.html -p models/pm/full -b models/shorten/full",
-    "copydebate": "cp rnn/generated/debate.html www-src/html-modules/content/debate.html",
-    "clean": "rm -rf .cache dist"
+    "build:site": "parcel build www-src/*.html -d dist/",
+    "clean": "rm -rf .cache dist lambda"
   },
   "keywords": [
     "neural-networks",
