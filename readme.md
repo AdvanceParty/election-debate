@@ -22,6 +22,10 @@ To trigger a new deployment, push to the master branch on the github repo.
 - NPM or Yarn
 - Node 10~ (later version may also be OK but are untested)
 
+### Watchouts
+
+The current app uses a pretty brutal method of extracting each reponse. The getReplies lambda function loads all responses from both speakers, plus the keywords map each time it is called -- a few MB of data. This is very inefficient and puts a hard cap on the amount of data that can be pre-generated for use. A proper solution would use a database or find an efficient way of generating content on demand.
+
 #### To generate new content
 
 - python 3.6 (3.7 will not work)
