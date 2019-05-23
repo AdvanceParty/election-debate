@@ -1,8 +1,9 @@
 {
   "name": "leaders-debate",
   "version": "0.1.0",
+  "author": "Advance Party <advanceparty@theroyals.com.au> (http://www.advanceparty.com)",
+  "license": "MIT",
   "description": "Interview a pair of neural networks who are impersonating Bill Shorten and Scott Morrison.",
-  "main": "index.js",
   "browserslist": [
     "last 1 version",
     "> 1%",
@@ -12,6 +13,10 @@
     "start": "npm run build && npm run watch",
     "watch": "concurrently 'parcel www-src*/.html' 'netlify dev'",
     "build": "npm run clean && npm run build:lambda && npm run build:site",
+    "generateDialog": "npm run generate:shorten && npm run generate:pm",
+    "generateKeywords": "node tools/generateKeywordMap.js",
+    "generate:shorten": "python tools/generateDialog.py -m models/shorten/ -n 100 -t .8 -o generated/shorten.txt",
+    "generate:pm": "python tools/generateDialog.py -m models/pm/ -n 100 -t .8 -o generated/pm.txt",
     "clean": "rm -rf .cache dist lambda",
     "build:site": "parcel build www-src/*.html -d dist/",
     "build:lambda": "netlify-lambda build www-src/lambda"
@@ -21,8 +26,6 @@
     "machine-learning",
     "politics"
   ],
-  "author": "Advance Party <advanceparty@theroyals.com.au> (http://www.advanceparty.com)",
-  "license": "MIT",
   "dependencies": {
     "lokijs": "^1.5.6",
     "nlcst-to-string": "^2.0.2",
@@ -45,7 +48,6 @@
     "posthtml": "^0.11.4",
     "posthtml-expressions": "^1.1.0",
     "posthtml-modules": "^0.4.2",
-    "sass": "^1.20.1",
-    "watch": "^1.0.2"
+    "sass": "^1.20.1"
   }
 }
